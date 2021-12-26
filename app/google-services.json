@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "161576815618",
+    "project_id": "soulmate-fce7d",
+    "storage_bucket": "soulmate-fce7d.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:161576815618:android:2420ed6559165c69dd6b1b",
+        "android_client_info": {
+          "package_name": "com.example.soulmatetest"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "161576815618-plsjsp45e6p4jve66o81amv4bdceao0g.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAgSHn7QwoT4esPwuUvCNGJU78MCLmkjOE"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "161576815618-plsjsp45e6p4jve66o81amv4bdceao0g.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
