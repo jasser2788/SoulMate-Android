@@ -3,15 +3,12 @@ package com.example.soulmatetest
 import android.content.Intent
 import android.view.LayoutInflater
 import android.view.ViewGroup
-
-import androidx.fragment.app.FragmentActivity
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.example.soulmatetest.models.Catalogue
-import kotlinx.android.synthetic.main.fragment_user.*
 import kotlinx.android.synthetic.main.single_item_visitor.view.*
 
-class CatalogueAdapter(val catlogueList: MutableList<Catalogue> ): RecyclerView.Adapter<CatalogueViewHolder>() {
+class FavoriteAdapter(val catlogueList: MutableList<Catalogue> ): RecyclerView.Adapter<CatalogueViewHolder>() {
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): CatalogueViewHolder {
         val view = LayoutInflater.from(parent.context)
             .inflate(R.layout.single_item_visitor, parent, false)
@@ -37,7 +34,7 @@ class CatalogueAdapter(val catlogueList: MutableList<Catalogue> ): RecyclerView.
             //holder.ownerPic.setImageResource(current.ownerPic)
             // val manager = (holder.itemView.context as FragmentActivity).supportFragmentManager
             holder.itemView.setOnClickListener(){
-                val intent = Intent(holder.itemView.context, CatalogueDetail::class.java)
+                val intent = Intent(holder.itemView.context, FavoriteDetail::class.java)
                 intent.apply {
                     putExtra("_id",current.id)
                     putExtra("picture",current.picture)
@@ -54,7 +51,7 @@ class CatalogueAdapter(val catlogueList: MutableList<Catalogue> ): RecyclerView.
             /*  val transaction =manager.beginTransaction()
             transaction.replace(R.id.fragmentContainerView, vendorProfile()).addToBackStack("")
                 .commit()*/
-          val intent = Intent(holder.itemView.context, VendorProfileActivity::class.java)
+            val intent = Intent(holder.itemView.context, VendorProfileActivity::class.java)
             holder.itemView.context.startActivity(intent)
         }
 

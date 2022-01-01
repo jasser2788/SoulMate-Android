@@ -25,4 +25,11 @@
         android:layout_height="wrap_content"
         android:text="ggggg"
         android:layout_gravity="center"/>
+
+    <RatingBar
+        android:id="@+id/ratingBar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:numStars="1"
+        android:stepSize="1"/>
 </androidx.coordinatorlayout.widget.CoordinatorLayout>

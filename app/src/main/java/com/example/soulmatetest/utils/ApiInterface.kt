@@ -19,13 +19,38 @@ interface ApiInterface {
     @PATCH("users/update/{id}")
     fun update(@Path("id") id: String?, @Body map : HashMap<String, String> ): Call<User>
 
+
+
     @GET("catalogues")
     fun getCatalogues():Call<MutableList<Catalogue>>
 
-    companion object {
-       // var BASE_URL = "http://192.168.1.6:5000/"
+    @POST("catalogues/add")
+    fun add(@Body map:HashMap<String, String>): Call<Catalogue>
 
-        var BASE_URL = "http://192.168.43.171:5000/"
+    @POST("catalogues/userpost")
+    fun getUserCatalogue(@Body map:HashMap<String, String>): Call<MutableList<Catalogue>>
+
+    @PATCH("/catalogues/update/{id}")
+    fun updateCatalogue(@Path("id") id: String?,@Body map : HashMap<String, String> ): Call<Catalogue>
+
+    @DELETE("/catalogues/delete/{id}")
+    fun deleteCatalogue(@Path("id") id: String? ): Call<Catalogue>
+
+    @PATCH("/users/addfavorite/{id}")
+    fun addFavorite(@Path("id") id: String?,@Body map : HashMap<String, String> ): Call<User>
+
+    @PATCH("/users/removefavorite/{id}/{idcat}")
+    fun removeFavorite(@Path("id") id: String?,@Path("idcat") idcat: String?): Call<User>
+
+    @GET("/catalogues/getfavorite/{id}")
+    fun getFavorite(@Path("id") id: String? ): Call<MutableList<Catalogue>>
+
+    companion object {
+        var BASE_URL = "http://192.168.1.7:5000/"
+
+       // var BASE_URL = "http://192.168.43.171:5000/"
+       //var BASE_URL = "http://192.168.1.9:5000/"
+
 
         fun create() : ApiInterface {
 

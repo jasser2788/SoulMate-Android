@@ -6,6 +6,7 @@ import android.net.ConnectivityManager
 import android.net.NetworkInfo
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.view.WindowManager
 import android.widget.Button
 import android.widget.CheckBox
 import android.widget.EditText
@@ -23,6 +24,8 @@ const val PASSWORD = "PASSWORD"
 const val PICTURE = "PICTURE"
 const val EMAIL = "EMAIL"
 const val ID = "ID"
+const val FAVORITE = "FAVORITE"
+
 const val IS_REMEMBRED = "IS_REMEMBRED"
 
 
@@ -114,7 +117,11 @@ class Login : AppCompatActivity() {
     }
 
     private fun doLogin(){
+        window.setFlags(
+            WindowManager.LayoutParams.FLAG_NOT_TOUCHABLE,
+            WindowManager.LayoutParams.FLAG_NOT_TOUCHABLE);
         if (validate()){
+
 
 
 
@@ -136,6 +143,7 @@ class Login : AppCompatActivity() {
                     val user = response.body()
 
                     if (user != null){
+
                         mSharedPref.edit().apply{
                             putString(ID,user.id)
                            putString(USERNAME, user.username)
@@ -150,7 +158,11 @@ class Login : AppCompatActivity() {
                         val intent = Intent(this@Login,MainHome::class.java)
                         startActivity(intent)
                         finish()
+                        window.clearFlags(WindowManager.LayoutParams.FLAG_NOT_TOUCHABLE);
+
                     }else{
+                        window.clearFlags(WindowManager.LayoutParams.FLAG_NOT_TOUCHABLE);
+
                         Toast.makeText(this@Login, "User not found", Toast.LENGTH_SHORT).show()
                     }
 
@@ -160,6 +172,7 @@ class Login : AppCompatActivity() {
 
                 override fun onFailure(call: Call<User>, t: Throwable) {
                     Toast.makeText(this@Login, "Connexion error!", Toast.LENGTH_SHORT).show()
+                    window.clearFlags(WindowManager.LayoutParams.FLAG_NOT_TOUCHABLE);
 
                     /* progBar.visibility = View.INVISIBLE
                      window.clearFlags( WindowManager.LayoutParams.FLAG_NOT_TOUCHABLE)*/

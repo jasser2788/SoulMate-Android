@@ -6,6 +6,7 @@
         <entry key="..\:/Users/JASSER/AndroidStudioProjects/SoulMateTest/app/src/main/res/drawable-v24/ic_launcher_foreground.xml" value="0.16927083333333334" />
         <entry key="..\:/Users/JASSER/AndroidStudioProjects/SoulMateTest/app/src/main/res/drawable/background_border.xml" value="0.23055555555555557" />
         <entry key="..\:/Users/JASSER/AndroidStudioProjects/SoulMateTest/app/src/main/res/drawable/gradient.xml" value="0.1" />
+        <entry key="..\:/Users/JASSER/AndroidStudioProjects/SoulMateTest/app/src/main/res/drawable/ic_add.xml" value="0.24375" />
         <entry key="..\:/Users/JASSER/AndroidStudioProjects/SoulMateTest/app/src/main/res/drawable/ic_arrow.xml" value="0.17291666666666666" />
         <entry key="..\:/Users/JASSER/AndroidStudioProjects/SoulMateTest/app/src/main/res/drawable/ic_home.xml" value="0.10260416666666666" />
         <entry key="..\:/Users/JASSER/AndroidStudioProjects/SoulMateTest/app/src/main/res/drawable/ic_launcher_background.xml" value="0.16927083333333334" />
@@ -16,6 +17,10 @@
         <entry key="..\:/Users/JASSER/AndroidStudioProjects/SoulMateTest/app/src/main/res/drawable/ic_signout.xml" value="0.17291666666666666" />
         <entry key="..\:/Users/JASSER/AndroidStudioProjects/SoulMateTest/app/src/main/res/drawable/roundedit.xml" value="0.11822916666666666" />
         <entry key="..\:/Users/JASSER/AndroidStudioProjects/SoulMateTest/app/src/main/res/drawable/text_view.xml" value="0.17291666666666666" />
+        <entry key="..\:/Users/JASSER/AndroidStudioProjects/SoulMateTest/app/src/main/res/layout/activity_add_post.xml" value="0.264" />
+        <entry key="..\:/Users/JASSER/AndroidStudioProjects/SoulMateTest/app/src/main/res/layout/activity_catalogue_detail.xml" value="0.264" />
+        <entry key="..\:/Users/JASSER/AndroidStudioProjects/SoulMateTest/app/src/main/res/layout/activity_catalogue_user_detail.xml" value="0.264" />
+        <entry key="..\:/Users/JASSER/AndroidStudioProjects/SoulMateTest/app/src/main/res/layout/activity_favorite_detail.xml" value="0.12760416666666666" />
         <entry key="..\:/Users/JASSER/AndroidStudioProjects/SoulMateTest/app/src/main/res/layout/activity_first.xml" value="0.15260416666666668" />
         <entry key="..\:/Users/JASSER/AndroidStudioProjects/SoulMateTest/app/src/main/res/layout/activity_login.xml" value="0.30191256830601093" />
         <entry key="..\:/Users/JASSER/AndroidStudioProjects/SoulMateTest/app/src/main/res/layout/activity_login_and_signup.xml" value="0.15534420289855072" />
@@ -24,14 +29,19 @@
         <entry key="..\:/Users/JASSER/AndroidStudioProjects/SoulMateTest/app/src/main/res/layout/activity_signup.xml" value="0.2" />
         <entry key="..\:/Users/JASSER/AndroidStudioProjects/SoulMateTest/app/src/main/res/layout/activity_splash_screen.xml" value="0.15260416666666668" />
         <entry key="..\:/Users/JASSER/AndroidStudioProjects/SoulMateTest/app/src/main/res/layout/activity_vendor_profile.xml" value="0.14895833333333333" />
+        <entry key="..\:/Users/JASSER/AndroidStudioProjects/SoulMateTest/app/src/main/res/layout/content_catalogue_detail.xml" value="0.14635416666666667" />
         <entry key="..\:/Users/JASSER/AndroidStudioProjects/SoulMateTest/app/src/main/res/layout/content_vendor_profile.xml" value="0.14895833333333333" />
+        <entry key="..\:/Users/JASSER/AndroidStudioProjects/SoulMateTest/app/src/main/res/layout/fragment_add_post.xml" value="0.264" />
+        <entry key="..\:/Users/JASSER/AndroidStudioProjects/SoulMateTest/app/src/main/res/layout/fragment_favorite.xml" value="0.2" />
         <entry key="..\:/Users/JASSER/AndroidStudioProjects/SoulMateTest/app/src/main/res/layout/fragment_home.xml" value="0.15260416666666668" />
         <entry key="..\:/Users/JASSER/AndroidStudioProjects/SoulMateTest/app/src/main/res/layout/fragment_login.xml" value="0.264" />
+        <entry key="..\:/Users/JASSER/AndroidStudioProjects/SoulMateTest/app/src/main/res/layout/fragment_my_post.xml" value="0.2" />
         <entry key="..\:/Users/JASSER/AndroidStudioProjects/SoulMateTest/app/src/main/res/layout/fragment_second.xml" value="0.1203125" />
         <entry key="..\:/Users/JASSER/AndroidStudioProjects/SoulMateTest/app/src/main/res/layout/fragment_signup.xml" value="0.264" />
         <entry key="..\:/Users/JASSER/AndroidStudioProjects/SoulMateTest/app/src/main/res/layout/fragment_user.xml" value="0.176" />
         <entry key="..\:/Users/JASSER/AndroidStudioProjects/SoulMateTest/app/src/main/res/layout/fragment_vendor_profile.xml" value="0.14895833333333333" />
         <entry key="..\:/Users/JASSER/AndroidStudioProjects/SoulMateTest/app/src/main/res/layout/single_item_visitor.xml" value="0.176" />
+        <entry key="..\:/Users/JASSER/AndroidStudioProjects/SoulMateTest/app/src/main/res/layout/single_post.xml" value="0.264" />
         <entry key="..\:/Users/JASSER/AndroidStudioProjects/SoulMateTest/app/src/main/res/layout/ssss.xml" value="0.14895833333333333" />
         <entry key="..\:/Users/JASSER/AndroidStudioProjects/SoulMateTest/app/src/main/res/menu/bottom_navigation_menu.xml" value="0.2234375" />
       </map>

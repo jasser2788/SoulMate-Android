@@ -6,7 +6,9 @@ import android.os.Bundle
 import android.view.View
 import android.widget.Toolbar
 import androidx.fragment.app.Fragment
+import com.example.soulmatetest.fragments.FavoriteFragment
 import com.example.soulmatetest.fragments.HomeFragment
+import com.example.soulmatetest.fragments.MyPostFragment
 import com.example.soulmatetest.fragments.UserFragment
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import kotlinx.android.synthetic.main.activity_main_home.*
@@ -22,6 +24,9 @@ class MainHome : AppCompatActivity() {
       val bottomNavigationView = findViewById<BottomNavigationView>(R.id.bottomNavigationView)
         val user_Fragement = UserFragment()
         val home_Fragement = HomeFragment()
+        val MyPost_Fragement = MyPostFragment()
+        val favorite_Fragement = FavoriteFragment()
+
         val menu = bottomNavigationView.menu
         setCurrentFragment(home_Fragement)
         bottomNavigationView.setOnItemSelectedListener() {
@@ -36,6 +41,13 @@ class MainHome : AppCompatActivity() {
                     setCurrentFragment(home_Fragement)
 
                 }
+                R.id.navigation_post ->{
+                    setCurrentFragment(MyPost_Fragement)
+                }
+                R.id.navigation_panier ->{
+                    setCurrentFragment(favorite_Fragement)
+                }
+
 
             }
             true

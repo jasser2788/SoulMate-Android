@@ -14,6 +14,20 @@
         android:theme="@style/Theme.SoulMateTest"
         android:usesCleartextTraffic="true">
         <activity
+            android:name=".FavoriteDetail"
+            android:exported="true" />
+        <activity
+            android:name=".CatalogueUserDetail"
+            android:exported="true" />
+        <activity
+            android:name=".CatalogueDetail"
+            android:exported="true"
+            android:label="@string/title_activity_catalogue_detail"
+            android:theme="@style/Theme.SoulMateTest.NoActionBar" />
+        <activity
+            android:name=".AddPost"
+            android:exported="true" />
+        <activity
             android:name=".SplashScreen"
             android:exported="true" />
         <activity
@@ -35,7 +49,7 @@
             android:theme="@style/Theme.SoulMateTest.NoActionBar" />
         <activity
             android:name=".Login"
-            android:exported="true"></activity>
+            android:exported="true" />
         <activity
             android:name=".VendorProfileActivity"
             android:exported="true"

@@ -45,12 +45,13 @@ class UserFragment : Fragment() {
 
         return inflater.inflate(R.layout.fragment_user, container, false)
     }
+
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
 
         mSharedPref = requireContext().getSharedPreferences(PREF_NAME, AppCompatActivity.MODE_PRIVATE);
         val pictureName = mSharedPref.getString(PICTURE, "").toString()
-        val storageRef = FirebaseStorage.getInstance().reference.child("images/$pictureName")
-        val localFile = File.createTempFile("tempImage", "jpg")
+      //  val storageRef = FirebaseStorage.getInstance().reference.child("images/$pictureName")
+       // val localFile = File.createTempFile("tempImage", "jpg")
 
         if(pictureName!="No Picture")
         {
@@ -72,7 +73,7 @@ class UserFragment : Fragment() {
 
         }
         //fireBase
-        storage = Firebase.storage
+       // storage = Firebase.storage
 
         mSharedPref = requireContext().getSharedPreferences(PREF_NAME, AppCompatActivity.MODE_PRIVATE);
         usernameProfile.setText(mSharedPref.getString(USERNAME, "").toString())
@@ -136,7 +137,7 @@ class UserFragment : Fragment() {
             {
                 progressDialog.dismiss()
             }
-            Toast.makeText(activity,"Successfuly uploaded", Toast.LENGTH_SHORT).show()
+            Toast.makeText(activity,"Image successfuly uploaded", Toast.LENGTH_SHORT).show()
             saveImageServer()
         }.addOnFailureListener{
             if(progressDialog.isShowing)

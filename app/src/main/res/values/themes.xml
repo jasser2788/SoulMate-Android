@@ -1,4 +1,4 @@
-<resources xmlns:tools="http://schemas.android.com/tools" xmlns:android="http://schemas.android.com/apk/res/android">
+<resources xmlns:android="http://schemas.android.com/apk/res/android" xmlns:tools="http://schemas.android.com/tools">
     <!-- Base application theme. -->
     <style name="Theme.SoulMateTest" parent="Theme.MaterialComponents.DayNight.NoActionBar">
         <!-- Primary brand color. -->
@@ -24,12 +24,12 @@
         <item name="cornerSize">50%</item>
     </style>
 
-<style name="error_style" parent="Widget.Design.TextInputLayout">
-    <item name="android:textSize">15dp</item>
-    <item name="android:textStyle">italic|bold</item>
+    <style name="error_style" parent="Widget.Design.TextInputLayout">
+        <item name="android:textSize">15dp</item>
+        <item name="android:textStyle">italic|bold</item>
 
 
-</style>
+    </style>
 
     <style name="Theme.SoulMateTest.NoActionBar">
         <item name="windowActionBar">false</item>

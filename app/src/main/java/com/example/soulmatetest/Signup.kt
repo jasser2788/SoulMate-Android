@@ -3,6 +3,7 @@ package com.example.soulmatetest
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.view.WindowManager
 import android.widget.Button
 import android.widget.EditText
 import android.widget.Toast
@@ -68,6 +69,9 @@ class Signup : AppCompatActivity() {
 
 
     private fun doLogin(){
+        window.setFlags(
+            WindowManager.LayoutParams.FLAG_NOT_TOUCHABLE,
+            WindowManager.LayoutParams.FLAG_NOT_TOUCHABLE);
         if (validate()){
             val apiInterface = ApiInterface.create()
             /* progBar.visibility = View.VISIBLE
@@ -91,8 +95,12 @@ class Signup : AppCompatActivity() {
                         startActivity(intent)
                         finish()
                         Toast.makeText(this@Signup, "You can login now", Toast.LENGTH_LONG).show()
+                        window.clearFlags(WindowManager.LayoutParams.FLAG_NOT_TOUCHABLE);
+
                     }else{
                         Toast.makeText(this@Signup, "Username already exist", Toast.LENGTH_SHORT).show()
+                        window.clearFlags(WindowManager.LayoutParams.FLAG_NOT_TOUCHABLE);
+
                     }
 
                     /*progBar.visibility = View.INVISIBLE
@@ -101,6 +109,7 @@ class Signup : AppCompatActivity() {
 
                 override fun onFailure(call: Call<User>, t: Throwable) {
                     Toast.makeText(this@Signup, "Connexion error!", Toast.LENGTH_SHORT).show()
+                    window.clearFlags(WindowManager.LayoutParams.FLAG_NOT_TOUCHABLE);
 
                     /* progBar.visibility = View.INVISIBLE
                      window.clearFlags( WindowManager.LayoutParams.FLAG_NOT_TOUCHABLE)*/

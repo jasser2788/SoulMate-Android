@@ -38,8 +38,8 @@ class HomeFragment : Fragment() {
 
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        //recylcerCatalogue = findViewById(R.id.recycleView)
-      /*  var CatalogueList : MutableList<Catalogue> = ArrayList()
+        /*recylcerCatalogue = findViewById(R.id.recycleView)
+        var CatalogueList : MutableList<Catalogue> = ArrayList()
         CatalogueList.add(Catalogue(image = R.drawable.fleur, title = "Lee Sin", count = "Category: Decor" ,R.drawable.user))
         CatalogueList.add(Catalogue(image = R.drawable.fleur2, title = "sqqs Sin", count = "Category: Decor" ,R.drawable.user))
         CatalogueList.add(Catalogue(image = R.drawable.salle, title = "564 Sin", count = "Category: Salle" ,R.drawable.user))
@@ -48,8 +48,7 @@ class HomeFragment : Fragment() {
         CatalogueList.add(Catalogue(image = R.drawable.fleur2, title = "sqqs Sin", count = "Category: Decor" ,R.drawable.user))
         CatalogueList.add(Catalogue(image = R.drawable.salle, title = "564 Sin", count = "Category: Salle" ,R.drawable.user))
         CatalogueList.add(Catalogue(image = R.drawable.musique, title = "bbb Sin", count = "Category: Animation" ,R.drawable.user))
-*/
-     /*   recylcerCatalogueAdapter = CatalogueAdapter(CatalogueList)
+   recylcerCatalogueAdapter = CatalogueAdapter(CatalogueList)
         myrecycleView.adapter = recylcerCatalogueAdapter
         myrecycleView.layoutManager = GridLayoutManager(context, 2)*/
         val apiInterface = ApiInterface.create()
@@ -64,7 +63,7 @@ class HomeFragment : Fragment() {
             }
 
             override fun onFailure(call: Call<MutableList<Catalogue>>, t: Throwable) {
-                Toast.makeText(activity, "Connexion error!", Toast.LENGTH_SHORT).show()
+                Toast.makeText(activity, t.toString(), Toast.LENGTH_SHORT).show()
             }
 
 
@@ -72,12 +71,12 @@ class HomeFragment : Fragment() {
 
     }
 
-    private fun showCatalogue(catalogues: MutableList<Catalogue>?) {
-
-        recylcerCatalogueAdapter = CatalogueAdapter(catalogues!!)
-        myrecycleView.adapter = recylcerCatalogueAdapter
-        myrecycleView.layoutManager = GridLayoutManager(context, 2)
-    }
+//    private fun showCatalogue(catalogues: MutableList<Catalogue>?) {
+//
+//        recylcerCatalogueAdapter = CatalogueAdapter(catalogues!!)
+//        myrecycleView.adapter = recylcerCatalogueAdapter
+//        myrecycleView.layoutManager = GridLayoutManager(context, 2)
+//    }
   /*  private fun doLogin() {
         val apiInterface = ApiInterface.create()
 
