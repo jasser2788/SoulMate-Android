@@ -3,10 +3,12 @@ package com.example.soulmatetest
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.view.Window
 import android.view.WindowManager
 import android.widget.Button
 import android.widget.EditText
 import android.widget.Toast
+import com.example.soulmatetest.models.ChatUser
 import com.example.soulmatetest.models.User
 import com.example.soulmatetest.utils.ApiInterface
 import com.google.android.material.textfield.TextInputEditText
@@ -67,11 +69,8 @@ class Signup : AppCompatActivity() {
         // Simply Do noting!
     }
 
-
     private fun doLogin(){
-        window.setFlags(
-            WindowManager.LayoutParams.FLAG_NOT_TOUCHABLE,
-            WindowManager.LayoutParams.FLAG_NOT_TOUCHABLE);
+
         if (validate()){
             val apiInterface = ApiInterface.create()
             /* progBar.visibility = View.VISIBLE
@@ -95,11 +94,9 @@ class Signup : AppCompatActivity() {
                         startActivity(intent)
                         finish()
                         Toast.makeText(this@Signup, "You can login now", Toast.LENGTH_LONG).show()
-                        window.clearFlags(WindowManager.LayoutParams.FLAG_NOT_TOUCHABLE);
 
                     }else{
                         Toast.makeText(this@Signup, "Username already exist", Toast.LENGTH_SHORT).show()
-                        window.clearFlags(WindowManager.LayoutParams.FLAG_NOT_TOUCHABLE);
 
                     }
 
@@ -109,7 +106,6 @@ class Signup : AppCompatActivity() {
 
                 override fun onFailure(call: Call<User>, t: Throwable) {
                     Toast.makeText(this@Signup, "Connexion error!", Toast.LENGTH_SHORT).show()
-                    window.clearFlags(WindowManager.LayoutParams.FLAG_NOT_TOUCHABLE);
 
                     /* progBar.visibility = View.INVISIBLE
                      window.clearFlags( WindowManager.LayoutParams.FLAG_NOT_TOUCHABLE)*/
@@ -122,25 +118,41 @@ class Signup : AppCompatActivity() {
 
 
     private fun validate(): Boolean {
+
         txtLogin.error = null
         txtPassword.error = null
 
         if (txtLogin.text!!.isEmpty()){
-            txtLayoutLogin.error = "mustNotBeEmpty"
+            txtLayoutLogin.error = "Must No tBe Empty"
+
             return false
         }        else txtLayoutLogin.error= null
 
 
+        if (txtLogin.length()< 4){
+            txtLayoutLogin.error = "Minimum 4 Characters"
+
+            return false
+        }
+        else txtLayoutLogin.error= null
+
         if (txtPassword.text!!.isEmpty()){
-            txtLayoutPassword.error ="mustNotBeEmpty"
+            txtLayoutPassword.error ="Must No tBe Empty"
+
             return false
         }        else txtLayoutPassword.error= null
 
+        if (txtPassword.length()< 8){
+            txtLayoutPassword.error = "Minimum 8 Characters"
+
+            return false
+        } else txtLayoutPassword.error= null
 
         if (txtPassword.text.toString()!=txtConfirmPassword.text.toString()){
-            val toast = Toast.makeText(applicationContext, "password is not the same", Toast.LENGTH_SHORT)
-            toast.show()
+
             txtLayoutConfirmPassword.error ="password is not the same"
+
+
             return false
         }       else txtLayoutConfirmPassword.error= null
 

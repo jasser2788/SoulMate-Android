@@ -1,9 +1,11 @@
 package com.example.soulmatetest
 
+import android.content.Intent
 import android.content.SharedPreferences
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
+import android.view.View
 import android.view.WindowManager
 import android.widget.Toast
 import com.bumptech.glide.Glide
@@ -28,6 +30,8 @@ class FavoriteDetail : AppCompatActivity() {
 
         mSharedPref = getSharedPreferences(PREF_NAME, MODE_PRIVATE);
 
+
+
         var filename : String
 
         filename = intent.getStringExtra("picture").toString()
@@ -45,6 +49,23 @@ class FavoriteDetail : AppCompatActivity() {
         removeFbtn.setOnClickListener(){
             remove()
         }
+
+        chatBtn.setOnClickListener(){
+            startchat(intent.getStringExtra("owner").toString())
+        }
+        TopHeaderView2.setBackButtonClickListener(){
+            onBackPressed()
+
+        }
+    }
+
+    private fun startchat(selectedUser:String) {
+        val intent = Intent(this, SingleChat::class.java)
+       intent.apply {
+           putExtra("selectedUser",selectedUser)
+       }
+
+        startActivity(intent)
     }
 
     private fun remove() {

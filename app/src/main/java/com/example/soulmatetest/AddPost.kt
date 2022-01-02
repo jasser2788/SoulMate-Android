@@ -15,6 +15,7 @@ import com.example.soulmatetest.models.User
 import com.example.soulmatetest.utils.ApiInterface
 import com.google.firebase.storage.FirebaseStorage
 import kotlinx.android.synthetic.main.activity_add_post.*
+import kotlinx.android.synthetic.main.activity_favorite_detail.*
 import kotlinx.android.synthetic.main.fragment_user.*
 import retrofit2.Call
 import retrofit2.Callback
@@ -34,6 +35,10 @@ class AddPost : AppCompatActivity() {
 
         imagePost.setOnClickListener(){
             openGallery()
+        }
+        TopHeaderView4.setBackButtonClickListener(){
+            onBackPressed()
+
         }
     }
 

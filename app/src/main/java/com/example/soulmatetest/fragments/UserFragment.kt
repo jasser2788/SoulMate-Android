@@ -15,6 +15,7 @@ import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+import androidx.navigation.fragment.findNavController
 import com.bumptech.glide.Glide
 import com.example.soulmatetest.*
 import com.example.soulmatetest.models.User
@@ -22,6 +23,7 @@ import com.example.soulmatetest.utils.ApiInterface
 import com.google.firebase.ktx.Firebase
 import com.google.firebase.storage.FirebaseStorage
 import com.google.firebase.storage.ktx.storage
+import io.getstream.chat.android.client.ChatClient
 import kotlinx.android.synthetic.main.fragment_user.*
 import retrofit2.Call
 import retrofit2.Callback
@@ -37,6 +39,8 @@ class UserFragment : Fragment() {
     private var selectedImageUri: Uri? = null
     lateinit var storage: FirebaseStorage
     lateinit var formater: String
+    private val client = ChatClient.instance()
+
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -85,6 +89,8 @@ class UserFragment : Fragment() {
             builder.setPositiveButton("Yes") { dialogInterface, which ->
                 requireContext().getSharedPreferences(PREF_NAME, Context.MODE_PRIVATE).edit()
                     .clear().apply()
+                //logout chat
+                client.disconnect()
                 val intent = Intent(context, Login::class.java)
                 startActivity(intent)
             }

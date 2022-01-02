@@ -3,7 +3,7 @@
 
 
     <item
-        android:title="Home"
+        android:title="Offers"
         android:id="@+id/navigation_home"
         android:icon="@drawable/ic_home"
         android:enabled="true"
@@ -11,21 +11,23 @@
 
     <item
     android:id="@+id/navigation_panier"
-    android:icon="@drawable/ic_panier"
-    android:title="My Order"/>
+    android:icon="@drawable/ic_baseline_favorite_24"
+    android:title="Favorite"/>
 
-    <item
-        android:title="Username"
-        android:id="@+id/navigation_profil"
-        android:icon="@drawable/ic_person"/>
+
 
 
     <item
-        android:title="Subscriptions"
+        android:title="Chat"
         android:id="@+id/navigation_users"
-        android:icon="@drawable/ic_profil" />
+        android:icon="@drawable/ic_chat" />
     <item
-        android:title="Posts"
+        android:title="My offers"
         android:id="@+id/navigation_post"
         android:icon="@drawable/ic_post" />
+
+    <item
+        android:title="Profile"
+        android:id="@+id/navigation_profil"
+        android:icon="@drawable/ic_person"/>
 </menu>

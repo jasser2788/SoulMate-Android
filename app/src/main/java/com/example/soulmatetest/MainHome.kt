@@ -6,10 +6,7 @@ import android.os.Bundle
 import android.view.View
 import android.widget.Toolbar
 import androidx.fragment.app.Fragment
-import com.example.soulmatetest.fragments.FavoriteFragment
-import com.example.soulmatetest.fragments.HomeFragment
-import com.example.soulmatetest.fragments.MyPostFragment
-import com.example.soulmatetest.fragments.UserFragment
+import com.example.soulmatetest.fragments.*
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import kotlinx.android.synthetic.main.activity_main_home.*
 
@@ -26,6 +23,7 @@ class MainHome : AppCompatActivity() {
         val home_Fragement = HomeFragment()
         val MyPost_Fragement = MyPostFragment()
         val favorite_Fragement = FavoriteFragment()
+        val friend_Chat_Fragment = FriendChatFragment()
 
         val menu = bottomNavigationView.menu
         setCurrentFragment(home_Fragement)
@@ -46,6 +44,9 @@ class MainHome : AppCompatActivity() {
                 }
                 R.id.navigation_panier ->{
                     setCurrentFragment(favorite_Fragement)
+                }
+                R.id.navigation_users ->{
+                    setCurrentFragment(friend_Chat_Fragment)
                 }
 
 

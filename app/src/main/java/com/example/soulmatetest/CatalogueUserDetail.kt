@@ -14,6 +14,7 @@ import com.example.soulmatetest.utils.ApiInterface
 import com.google.firebase.storage.FirebaseStorage
 import kotlinx.android.synthetic.main.activity_add_post.*
 import kotlinx.android.synthetic.main.activity_catalogue_user_detail.*
+import kotlinx.android.synthetic.main.activity_favorite_detail.*
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
@@ -46,6 +47,10 @@ class CatalogueUserDetail : AppCompatActivity() {
         }
         imageDU.setOnClickListener(){
             openGallery()
+        }
+        TopHeaderView3.setBackButtonClickListener(){
+            onBackPressed()
+
         }
     }
     private fun openGallery() {

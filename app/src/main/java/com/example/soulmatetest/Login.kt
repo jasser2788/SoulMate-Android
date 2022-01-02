@@ -6,15 +6,24 @@ import android.net.ConnectivityManager
 import android.net.NetworkInfo
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
+import android.view.Window
 import android.view.WindowManager
 import android.widget.Button
 import android.widget.CheckBox
 import android.widget.EditText
 import android.widget.Toast
+import com.bumptech.glide.Glide
+import com.example.soulmatetest.models.ChatUser
 import com.example.soulmatetest.models.User
 import com.example.soulmatetest.utils.ApiInterface
 import com.google.android.material.textfield.TextInputEditText
 import com.google.android.material.textfield.TextInputLayout
+import io.getstream.chat.android.client.ChatClient
+import io.getstream.chat.android.client.logger.ChatLogLevel
+import io.getstream.chat.android.client.models.name
+import io.getstream.chat.android.livedata.ChatDomain
+import kotlinx.android.synthetic.main.fragment_user.*
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
@@ -45,6 +54,9 @@ class Login : AppCompatActivity() {
     lateinit var btnLogin: Button
     lateinit var btnSignup: Button
     private lateinit var mSharedPref: SharedPreferences
+    private lateinit var userchat: io.getstream.chat.android.client.models.User
+   // private val client = ChatClient.instance()
+
 
     //lateinit var progBar: CircularProgressIndicator
 
@@ -55,7 +67,6 @@ class Login : AppCompatActivity() {
         var connectivity : ConnectivityManager? = null
         var info : NetworkInfo? = null
         mSharedPref = getSharedPreferences(PREF_NAME, MODE_PRIVATE);
-
 
 
         txtLogin = findViewById(R.id.txtLogin)
@@ -117,9 +128,7 @@ class Login : AppCompatActivity() {
     }
 
     private fun doLogin(){
-        window.setFlags(
-            WindowManager.LayoutParams.FLAG_NOT_TOUCHABLE,
-            WindowManager.LayoutParams.FLAG_NOT_TOUCHABLE);
+
         if (validate()){
 
 
@@ -141,9 +150,9 @@ class Login : AppCompatActivity() {
                 override fun onResponse(call: Call<User>, response: Response<User>) {
 
                     val user = response.body()
-
                     if (user != null){
 
+                      connectChat(user)
                         mSharedPref.edit().apply{
                             putString(ID,user.id)
                            putString(USERNAME, user.username)
@@ -158,10 +167,8 @@ class Login : AppCompatActivity() {
                         val intent = Intent(this@Login,MainHome::class.java)
                         startActivity(intent)
                         finish()
-                        window.clearFlags(WindowManager.LayoutParams.FLAG_NOT_TOUCHABLE);
 
                     }else{
-                        window.clearFlags(WindowManager.LayoutParams.FLAG_NOT_TOUCHABLE);
 
                         Toast.makeText(this@Login, "User not found", Toast.LENGTH_SHORT).show()
                     }
@@ -172,7 +179,6 @@ class Login : AppCompatActivity() {
 
                 override fun onFailure(call: Call<User>, t: Throwable) {
                     Toast.makeText(this@Login, "Connexion error!", Toast.LENGTH_SHORT).show()
-                    window.clearFlags(WindowManager.LayoutParams.FLAG_NOT_TOUCHABLE);
 
                     /* progBar.visibility = View.INVISIBLE
                      window.clearFlags( WindowManager.LayoutParams.FLAG_NOT_TOUCHABLE)*/
@@ -183,18 +189,59 @@ class Login : AppCompatActivity() {
         }
     }
 
+    private fun connectChat(user: User) {
+
+
+        userchat = io.getstream.chat.android.client.models.User(
+            id = user.username,
+            extraData = mutableMapOf(
+                "name" to user.username,
+                "image" to "https://firebasestorage.googleapis.com/v0/b/soulmate-fce7d.appspot.com/o/images%2F" + user.picture + "?alt=media"
+
+            )
+        )
+        val client = ChatClient.instance()
+        val token = client.devToken(userchat.id)
+        client.connectUser(
+            user = userchat,
+            token = token
+        ).enqueue { result ->
+            if (result.isSuccess) {
+                Log.d("ChannelFragment", "Success Connecting the User")
+            } else {
+                Log.d("ChannelFragment", result.error().message.toString())
+            }
+        }
+    }
+
     private fun validate(): Boolean {
         txtLogin.error = null
         txtPassword.error = null
 
+      /*  if (txtLogin.length()< 4){
+            txtLayoutLogin.error = "Minimum 4 Characters"
+
+            return false
+        }
+        else txtLayoutLogin.error= null*/
+
         if (txtLogin.text!!.isEmpty()){
-            txtLayoutLogin.error = "mustNotBeEmpty"
+            txtLayoutLogin.error = "Must No tBe Empty"
+
             return false
         }
         else txtLayoutLogin.error= null
 
+      /*  if (txtPassword.length()< 8){
+            txtLayoutPassword.error = "Minimum 8 Characters"
+
+            return false
+        }
+        else txtLayoutPassword.error= null*/
+
         if (txtPassword.text!!.isEmpty()){
-            txtLayoutPassword.error = "mustNotBeEmpty"
+            txtLayoutPassword.error = "Must No tBe Empty"
+
             return false
         }
         else txtLayoutPassword.error= null
