@@ -59,8 +59,7 @@
     android:layout_height="50dp"
     android:gravity="center"
     android:layout_gravity="center"
-    android:text="dfdsf"
-    android:textColor="@color/black"
+    android:textColor="@color/colorButton"
     android:textSize="25dp"
     android:textStyle="italic|bold"
     >
