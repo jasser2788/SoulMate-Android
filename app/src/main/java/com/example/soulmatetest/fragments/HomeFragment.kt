@@ -5,9 +5,11 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.view.WindowManager
 import android.widget.Toast
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+
 import com.bumptech.glide.Glide
 import com.example.soulmatetest.CatalogueAdapter
 import com.example.soulmatetest.R
@@ -51,19 +53,30 @@ class HomeFragment : Fragment() {
    recylcerCatalogueAdapter = CatalogueAdapter(CatalogueList)
         myrecycleView.adapter = recylcerCatalogueAdapter
         myrecycleView.layoutManager = GridLayoutManager(context, 2)*/
+
+        activity?.window?.setFlags(
+            WindowManager.LayoutParams.FLAG_NOT_TOUCHABLE,
+            WindowManager.LayoutParams.FLAG_NOT_TOUCHABLE);
+
         val apiInterface = ApiInterface.create()
 
         apiInterface.getCatalogues().enqueue(object : Callback<MutableList<Catalogue>> {
+
             override fun onResponse(call: Call<MutableList<Catalogue>>, response: Response<MutableList<Catalogue>>
             ) {
 
                 recylcerCatalogueAdapter = CatalogueAdapter(response.body()!!)
                 myrecycleView.adapter = recylcerCatalogueAdapter
                 myrecycleView.layoutManager = GridLayoutManager(context, 2)
+                activity?.window?.clearFlags(WindowManager.LayoutParams.FLAG_NOT_TOUCHABLE);
+
             }
 
             override fun onFailure(call: Call<MutableList<Catalogue>>, t: Throwable) {
+
                 Toast.makeText(activity, t.toString(), Toast.LENGTH_SHORT).show()
+                activity?.window?.clearFlags(WindowManager.LayoutParams.FLAG_NOT_TOUCHABLE);
+
             }
 
 

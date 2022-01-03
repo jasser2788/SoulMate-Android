@@ -6,6 +6,7 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.view.WindowManager
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.GridLayoutManager
@@ -44,6 +45,9 @@ class FavoriteFragment : Fragment() {
         mSharedPref = requireContext().getSharedPreferences(PREF_NAME, AppCompatActivity.MODE_PRIVATE);
         val apiInterface = ApiInterface.create()
 
+        activity?.window?.setFlags(
+            WindowManager.LayoutParams.FLAG_NOT_TOUCHABLE,
+            WindowManager.LayoutParams.FLAG_NOT_TOUCHABLE);
 
 
         apiInterface.getFavorite(mSharedPref.getString(ID, "").toString()).enqueue(object : Callback<MutableList<Catalogue>> {
@@ -53,6 +57,8 @@ class FavoriteFragment : Fragment() {
                 recylcerCatalogueAdapter = FavoriteAdapter(response.body()!!)
                 recyclefavorite.adapter = recylcerCatalogueAdapter
                 recyclefavorite.layoutManager = GridLayoutManager(context, 2)
+                activity?.window?.clearFlags(WindowManager.LayoutParams.FLAG_NOT_TOUCHABLE);
+
                 if (recylcerCatalogueAdapter.itemCount == 0) {
                     nofavorite.text = "No Favorite !"
                 }
@@ -64,6 +70,8 @@ class FavoriteFragment : Fragment() {
 
             override fun onFailure(call: Call<MutableList<Catalogue>>, t: Throwable) {
                 Toast.makeText(activity, t.toString(), Toast.LENGTH_SHORT).show()
+                activity?.window?.clearFlags(WindowManager.LayoutParams.FLAG_NOT_TOUCHABLE);
+
             }
 
 

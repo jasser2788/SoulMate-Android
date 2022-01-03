@@ -47,13 +47,7 @@ class FavoriteAdapter(val catlogueList: MutableList<Catalogue> ): RecyclerView.A
                 holder.itemView.context.startActivity(intent)   }
 
         }
-        holder.ownerPic.setOnClickListener {
-            /*  val transaction =manager.beginTransaction()
-            transaction.replace(R.id.fragmentContainerView, vendorProfile()).addToBackStack("")
-                .commit()*/
-            val intent = Intent(holder.itemView.context, VendorProfileActivity::class.java)
-            holder.itemView.context.startActivity(intent)
-        }
+
 
 
 

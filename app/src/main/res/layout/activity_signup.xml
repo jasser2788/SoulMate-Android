@@ -26,25 +26,25 @@
         android:layout_width="300dp"
         android:layout_height="wrap_content"
         android:layout_margin="10dp"
-        android:textColorHint="@color/teal_200"
-        app:boxStrokeColor="@color/teal_200"
+        android:textColorHint="#5C73E8"
+        app:boxStrokeColor="#5C73E8"
 
         app:errorEnabled="true"
         app:errorTextAppearance="@style/error_style"
 
 
-        app:hintTextColor="@color/teal_200"
+        app:hintTextColor="#5C73E8"
         app:layout_constraintBottom_toTopOf="@id/txtLayoutConfirmPassword"
 
 
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:suffixTextColor="@color/teal_200"
+        app:suffixTextColor="#5C73E8"
         app:boxStrokeWidth="0dp"
         app:boxStrokeWidthFocused="0dp"
 
         app:endIconMode="password_toggle"
-        app:endIconTint="@color/teal_200"
+        app:endIconTint="#5C73E8"
         >
 
         <com.google.android.material.textfield.TextInputEditText
@@ -71,7 +71,7 @@
         android:layout_marginBottom="10dp"
         android:text="Sign up"
 
-        android:textColor="@color/black"
+        android:textColor="#5C73E8"
         android:textStyle="italic"
         app:backgroundTint="#D1A9A9"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -88,8 +88,8 @@
         android:layout_height="wrap_content"
         android:layout_margin="10dp"
         android:layout_marginBottom="8dp"
-        android:textColorHint="@color/teal_200"
-        app:boxStrokeColor="@color/teal_200"
+        android:textColorHint="#5C73E8"
+        app:boxStrokeColor="#5C73E8"
 
 
         app:boxStrokeWidth="0dp"
@@ -97,12 +97,12 @@
         app:errorEnabled="true"
         app:errorTextAppearance="@style/error_style"
 
-        app:hintTextColor="@color/teal_200"
+        app:hintTextColor="#5C73E8"
         app:layout_constraintBottom_toTopOf="@+id/txtLayoutPassword"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.495"
         app:layout_constraintStart_toStartOf="parent"
-        app:suffixTextColor="@color/teal_200">
+        app:suffixTextColor="#5C73E8">
 
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/txtLogin"
@@ -129,25 +129,25 @@
         android:gravity="center"
         android:layout_height="wrap_content"
         android:layout_margin="10dp"
-        android:textColorHint="@color/teal_200"
-        app:boxStrokeColor="@color/teal_200"
+        android:textColorHint="#5C73E8"
+        app:boxStrokeColor="#5C73E8"
 
         app:errorEnabled="true"
         app:errorTextAppearance="@style/error_style"
 
 
-        app:hintTextColor="@color/teal_200"
+        app:hintTextColor="#5C73E8"
         app:layout_constraintBottom_toTopOf="@id/signup"
 
 
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:suffixTextColor="@color/teal_200"
+        app:suffixTextColor="#5C73E8"
         app:boxStrokeWidth="0dp"
         app:boxStrokeWidthFocused="0dp"
 
         app:endIconMode="password_toggle"
-        app:endIconTint="@color/teal_200"
+        app:endIconTint="#5C73E8"
         >
 
         <com.google.android.material.textfield.TextInputEditText
@@ -179,7 +179,7 @@
         android:layout_marginTop="21dp"
         android:layout_marginBottom="8dp"
         android:text="Already have an account?"
-        android:textColor="#9D0707"
+        android:textColor="#5C73E8"
         android:textSize="17sp"
         android:textStyle="bold|italic"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -198,7 +198,7 @@
         android:layout_marginEnd="25dp"
         android:layout_marginBottom="8dp"
         android:text="LOGIN"
-        android:textColor="@color/black"
+        android:textColor="#5C73E8"
         android:textStyle="italic"
         app:backgroundTint="#D1A9A9"
         app:layout_constraintBottom_toBottomOf="parent"

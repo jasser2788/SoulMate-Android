@@ -70,7 +70,7 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:background="@color/white"
+            android:background="@color/viewBg"
           android:layout_margin="10dp"
                 >
             <TextView
@@ -81,9 +81,9 @@
                 android:drawableLeft="@drawable/ic_signout"
                 android:drawableRight="@drawable/ic_arrow"
                 android:drawablePadding="20dp"
-                android:drawableTint="@color/black"
+                android:drawableTint="@color/colorButton"
                 android:text="Log Out"
-                android:textColor="@color/black"
+                android:textColor="@color/colorButton"
                 android:textSize="20dp"
                 android:textStyle="italic"
                 app:layout_constraintBottom_toBottomOf="parent"

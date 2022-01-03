@@ -46,7 +46,8 @@ interface ApiInterface {
     fun getFavorite(@Path("id") id: String? ): Call<MutableList<Catalogue>>
 
     companion object {
-        var BASE_URL = "http://192.168.1.6:5000/"
+        //var BASE_URL = "http://192.168.1.6:5000/"
+        var BASE_URL = "https://soulmateserver.herokuapp.com/"
 
        // var BASE_URL = "http://192.168.43.171:5000/"
        //var BASE_URL = "http://192.168.1.9:5000/"

@@ -105,6 +105,8 @@ class CatalogueUserDetail : AppCompatActivity() {
         builder.setTitle("Logout")
         builder.setMessage("Are you sure you want to delete your post ?")
         builder.setPositiveButton("Yes") { dialogInterface, which ->
+            window.setFlags(WindowManager.LayoutParams.FLAG_NOT_TOUCHABLE,
+                WindowManager.LayoutParams.FLAG_NOT_TOUCHABLE);
 
             apiInterface.deleteCatalogue(intent.getStringExtra("id").toString()).enqueue(object :
                 Callback<Catalogue> {
@@ -118,6 +120,7 @@ class CatalogueUserDetail : AppCompatActivity() {
                             "deleted successfully",
                             Toast.LENGTH_SHORT
                         ).show()
+                        window.clearFlags(WindowManager.LayoutParams.FLAG_NOT_TOUCHABLE);
 
                         finish()
 
@@ -125,18 +128,21 @@ class CatalogueUserDetail : AppCompatActivity() {
                     } else {
                         Toast.makeText(this@CatalogueUserDetail, "error!", Toast.LENGTH_SHORT)
                             .show()
+                        window.clearFlags(WindowManager.LayoutParams.FLAG_NOT_TOUCHABLE);
 
                     }
                 }
 
                 override fun onFailure(call: Call<Catalogue>, t: Throwable) {
                     Toast.makeText(this@CatalogueUserDetail, t.toString(), Toast.LENGTH_LONG).show()
+                    window.clearFlags(WindowManager.LayoutParams.FLAG_NOT_TOUCHABLE);
 
                 }
             })
         }
         builder.setNegativeButton("No") { dialogInterface, which ->
             dialogInterface.dismiss()
+            window.clearFlags(WindowManager.LayoutParams.FLAG_NOT_TOUCHABLE);
 
         }
         builder.create().show()

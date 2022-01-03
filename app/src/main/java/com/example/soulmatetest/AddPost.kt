@@ -15,7 +15,7 @@ import com.example.soulmatetest.models.User
 import com.example.soulmatetest.utils.ApiInterface
 import com.google.firebase.storage.FirebaseStorage
 import kotlinx.android.synthetic.main.activity_add_post.*
-import kotlinx.android.synthetic.main.activity_favorite_detail.*
+import kotlinx.android.synthetic.main.activity_catalogue_detail.*
 import kotlinx.android.synthetic.main.fragment_user.*
 import retrofit2.Call
 import retrofit2.Callback
@@ -29,16 +29,17 @@ class AddPost : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_add_post)
         formater = "No Picture"
+        TopHeaderView4.setBackButtonClickListener(){
+            onBackPressed()
+
+        }
         btnConfirmAdd.setOnClickListener(){
+            if (validate())
     addPost()
 }
 
         imagePost.setOnClickListener(){
             openGallery()
-        }
-        TopHeaderView4.setBackButtonClickListener(){
-            onBackPressed()
-
         }
     }
 
@@ -103,6 +104,7 @@ class AddPost : AppCompatActivity() {
         map["description"]=descriptiontxt.text.toString()
         map["username"]=mSharedPref.getString(USERNAME, "").toString()
         map["picture"] = formater
+        map["ownerpic"] = mSharedPref.getString(PICTURE, "").toString()
 
             apiInterface.add(map).enqueue(object : Callback<Catalogue> {
                 override fun onResponse(call: Call<Catalogue>, response: Response<Catalogue>) {
@@ -130,6 +132,30 @@ class AddPost : AppCompatActivity() {
             })
 
 
+    }
+
+    private fun validate(): Boolean {
+        categorytxt.error = null
+        descriptiontxt.error = null
+
+
+        if (categorytxt.text!!.isEmpty()){
+            categorytxt.error = "Must No tBe Empty"
+
+            return false
+        }
+        else categorytxt.error= null
+
+
+
+        if (descriptiontxt.text!!.isEmpty()){
+            descriptiontxt.error = "Must No tBe Empty"
+
+            return false
+        }
+        else descriptiontxt.error= null
+
+        return true
     }
 
 }

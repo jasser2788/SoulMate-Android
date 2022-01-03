@@ -9,4 +9,6 @@ data class Catalogue (
         @SerializedName("description") val description : String,
         @SerializedName("username") val nom : String,
         @SerializedName("picture") val picture : String,
-)
+        @SerializedName("ownerpic") val ownerpic : String
+
+        )

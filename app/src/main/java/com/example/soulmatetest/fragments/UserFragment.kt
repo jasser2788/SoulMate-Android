@@ -8,10 +8,12 @@ import android.content.SharedPreferences
 import android.graphics.BitmapFactory
 import android.net.Uri
 import android.os.Bundle
+import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.view.WindowManager
 import android.widget.ImageView
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
@@ -40,6 +42,7 @@ class UserFragment : Fragment() {
     lateinit var storage: FirebaseStorage
     lateinit var formater: String
     private val client = ChatClient.instance()
+    private lateinit var userchat: io.getstream.chat.android.client.models.User
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -59,6 +62,9 @@ class UserFragment : Fragment() {
 
         if(pictureName!="No Picture")
         {
+            /*activity?.window?.setFlags(
+                WindowManager.LayoutParams.FLAG_NOT_TOUCHABLE,
+                WindowManager.LayoutParams.FLAG_NOT_TOUCHABLE);*/
          /*   storageRef.getFile(localFile).addOnSuccessListener {
 
                 val bitmap = BitmapFactory.decodeFile(localFile.absolutePath)
@@ -74,6 +80,7 @@ class UserFragment : Fragment() {
                 .load(path)
                 .into(imageuser)
 
+          //  activity?.window?.clearFlags(WindowManager.LayoutParams.FLAG_NOT_TOUCHABLE);
 
         }
         //fireBase
@@ -138,12 +145,14 @@ class UserFragment : Fragment() {
         val storageReference = FirebaseStorage.getInstance().reference.child("images/$formater")
         storageReference.putFile(selectedImageUri!!).
         addOnSuccessListener {
+
             imageuser.setImageURI(selectedImageUri)
             if(progressDialog.isShowing)
             {
                 progressDialog.dismiss()
             }
             Toast.makeText(activity,"Image successfuly uploaded", Toast.LENGTH_SHORT).show()
+            saveImageChat(formater)
             saveImageServer()
         }.addOnFailureListener{
             if(progressDialog.isShowing)
@@ -154,6 +163,28 @@ class UserFragment : Fragment() {
 
         }
     }
+
+   private fun saveImageChat(formater : String) {
+        userchat = io.getstream.chat.android.client.models.User(
+            id = mSharedPref.getString(USERNAME, "").toString(),
+            extraData = mutableMapOf(
+                "name" to mSharedPref.getString(USERNAME, "").toString(),
+                "image" to "https://firebasestorage.googleapis.com/v0/b/soulmate-fce7d.appspot.com/o/images%2F" + formater + "?alt=media"
+
+            )
+        )
+        val client = ChatClient.instance()
+        client.updateUser(
+            user = userchat
+        ).enqueue { result ->
+            if (result.isSuccess) {
+                Log.d("ChannelFragment", "Success Connecting the User")
+            } else {
+                Log.d("ChannelFragment", result.error().message.toString())
+            }
+        }
+    }
+
     private fun saveImageServer() {
         val apiInterface = ApiInterface.create()
         val map: HashMap<String, String> = HashMap()

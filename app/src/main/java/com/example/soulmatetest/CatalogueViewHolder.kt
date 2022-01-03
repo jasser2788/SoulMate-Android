@@ -10,6 +10,6 @@ class CatalogueViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
     val picture : ImageView = itemView.findViewById(R.id.imageCatalogue)
     val category : TextView = itemView.findViewById(R.id.category)
     val name : TextView = itemView.findViewById(R.id.name)
-    val ownerPic : ImageView = itemView.findViewById(R.id.ownerPic)
+   // val ownerPic : ImageView = itemView.findViewById(R.id.ownerPic)
 
 }
