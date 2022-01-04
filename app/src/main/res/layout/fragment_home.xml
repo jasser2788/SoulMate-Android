@@ -5,6 +5,13 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".fragments.HomeFragment">
+
+    <include
+        android:id="@+id/searchtoolbar"
+        layout="@layout/searchtoolbar"
+        tools:layout_editor_absoluteX="0dp"
+        tools:layout_editor_absoluteY="0dp" />
+
     <androidx.fragment.app.FragmentContainerView
         android:id="@+id/fragmentContainerView"
         android:layout_width="match_parent"
@@ -16,9 +23,13 @@
 
         android:id="@+id/myrecycleView"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="599dp"
+
         android:background="@color/mainColor"
-        >
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toEndOf="@+id/searchtoolbar"
+        app:layout_constraintTop_toBottomOf="@+id/searchtoolbar">
 
     </androidx.recyclerview.widget.RecyclerView>
 

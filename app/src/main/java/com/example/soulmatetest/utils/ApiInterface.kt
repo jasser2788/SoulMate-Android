@@ -20,9 +20,17 @@ interface ApiInterface {
     fun update(@Path("id") id: String?, @Body map : HashMap<String, String> ): Call<User>
 
 
-
     @GET("catalogues")
     fun getCatalogues():Call<MutableList<Catalogue>>
+
+    @POST("catalogues/search")
+    fun search(@Body map:HashMap<String, String>):Call<MutableList<Catalogue>>
+
+    @POST("catalogues/searchuserpost")
+    fun searchuserpost(@Body map:HashMap<String, String>):Call<MutableList<Catalogue>>
+
+    @POST("catalogues/searchfavorite")
+    fun searchfavorite(@Body map:HashMap<String, String>):Call<MutableList<Catalogue>>
 
     @POST("catalogues/add")
     fun add(@Body map:HashMap<String, String>): Call<Catalogue>
@@ -46,7 +54,7 @@ interface ApiInterface {
     fun getFavorite(@Path("id") id: String? ): Call<MutableList<Catalogue>>
 
     companion object {
-        //var BASE_URL = "http://192.168.1.6:5000/"
+       // var BASE_URL = "http://192.168.1.6:5000/"
         var BASE_URL = "https://soulmateserver.herokuapp.com/"
 
        // var BASE_URL = "http://192.168.43.171:5000/"

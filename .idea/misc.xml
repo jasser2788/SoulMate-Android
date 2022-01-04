@@ -30,7 +30,7 @@
         <entry key="..\:/Users/JASSER/AndroidStudioProjects/SoulMateTest/app/src/main/res/layout/activity_login.xml" value="0.30191256830601093" />
         <entry key="..\:/Users/JASSER/AndroidStudioProjects/SoulMateTest/app/src/main/res/layout/activity_login_and_signup.xml" value="0.15534420289855072" />
         <entry key="..\:/Users/JASSER/AndroidStudioProjects/SoulMateTest/app/src/main/res/layout/activity_main.xml" value="0.13636363636363635" />
-        <entry key="..\:/Users/JASSER/AndroidStudioProjects/SoulMateTest/app/src/main/res/layout/activity_main_home.xml" value="0.4" />
+        <entry key="..\:/Users/JASSER/AndroidStudioProjects/SoulMateTest/app/src/main/res/layout/activity_main_home.xml" value="0.264" />
         <entry key="..\:/Users/JASSER/AndroidStudioProjects/SoulMateTest/app/src/main/res/layout/activity_signup.xml" value="0.2" />
         <entry key="..\:/Users/JASSER/AndroidStudioProjects/SoulMateTest/app/src/main/res/layout/activity_single_chat.xml" value="0.14322916666666666" />
         <entry key="..\:/Users/JASSER/AndroidStudioProjects/SoulMateTest/app/src/main/res/layout/activity_splash_screen.xml" value="0.15260416666666668" />
@@ -42,7 +42,7 @@
         <entry key="..\:/Users/JASSER/AndroidStudioProjects/SoulMateTest/app/src/main/res/layout/fragment_chat.xml" value="0.14322916666666666" />
         <entry key="..\:/Users/JASSER/AndroidStudioProjects/SoulMateTest/app/src/main/res/layout/fragment_favorite.xml" value="0.2" />
         <entry key="..\:/Users/JASSER/AndroidStudioProjects/SoulMateTest/app/src/main/res/layout/fragment_friend_chat.xml" value="0.13020833333333334" />
-        <entry key="..\:/Users/JASSER/AndroidStudioProjects/SoulMateTest/app/src/main/res/layout/fragment_home.xml" value="0.15260416666666668" />
+        <entry key="..\:/Users/JASSER/AndroidStudioProjects/SoulMateTest/app/src/main/res/layout/fragment_home.xml" value="0.264" />
         <entry key="..\:/Users/JASSER/AndroidStudioProjects/SoulMateTest/app/src/main/res/layout/fragment_login.xml" value="0.264" />
         <entry key="..\:/Users/JASSER/AndroidStudioProjects/SoulMateTest/app/src/main/res/layout/fragment_my_post.xml" value="0.2" />
         <entry key="..\:/Users/JASSER/AndroidStudioProjects/SoulMateTest/app/src/main/res/layout/fragment_second.xml" value="0.1203125" />
@@ -50,12 +50,14 @@
         <entry key="..\:/Users/JASSER/AndroidStudioProjects/SoulMateTest/app/src/main/res/layout/fragment_user.xml" value="0.176" />
         <entry key="..\:/Users/JASSER/AndroidStudioProjects/SoulMateTest/app/src/main/res/layout/fragment_users_chat.xml" value="0.13020833333333334" />
         <entry key="..\:/Users/JASSER/AndroidStudioProjects/SoulMateTest/app/src/main/res/layout/fragment_vendor_profile.xml" value="0.14895833333333333" />
+        <entry key="..\:/Users/JASSER/AndroidStudioProjects/SoulMateTest/app/src/main/res/layout/searchtoolbar.xml" value="0.4" />
         <entry key="..\:/Users/JASSER/AndroidStudioProjects/SoulMateTest/app/src/main/res/layout/single_item_visitor.xml" value="0.176" />
         <entry key="..\:/Users/JASSER/AndroidStudioProjects/SoulMateTest/app/src/main/res/layout/single_post.xml" value="0.264" />
         <entry key="..\:/Users/JASSER/AndroidStudioProjects/SoulMateTest/app/src/main/res/layout/ssss.xml" value="0.14895833333333333" />
         <entry key="..\:/Users/JASSER/AndroidStudioProjects/SoulMateTest/app/src/main/res/layout/user_row_layout.xml" value="0.12760416666666666" />
         <entry key="..\:/Users/JASSER/AndroidStudioProjects/SoulMateTest/app/src/main/res/menu/bottom_navigation_menu.xml" value="0.2234375" />
         <entry key="..\:/Users/JASSER/AndroidStudioProjects/SoulMateTest/app/src/main/res/menu/userschatmenu.xml" value="0.13020833333333334" />
+        <entry key="..\:/Users/JASSER/AndroidStudioProjects/SoulMateTest/app/src/main/res/mipmap-anydpi-v26/ic_launcher.xml" value="0.23425925925925925" />
       </map>
     </option>
   </component>

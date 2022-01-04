@@ -48,6 +48,7 @@
 
     <Button
         android:id="@+id/favoriteBtn"
+        android:backgroundTint="#E84C4C"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginBottom="40dp"
@@ -102,6 +103,7 @@
 
     <Button
         android:id="@+id/startChatBtn"
+        android:backgroundTint="#E84C4C"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginBottom="20dp"

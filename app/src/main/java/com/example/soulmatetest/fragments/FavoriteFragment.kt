@@ -2,6 +2,8 @@ package com.example.soulmatetest.fragments
 
 import android.content.SharedPreferences
 import android.os.Bundle
+import android.text.Editable
+import android.text.TextWatcher
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
@@ -16,6 +18,7 @@ import com.example.soulmatetest.utils.ApiInterface
 import kotlinx.android.synthetic.main.fragment_favorite.*
 import kotlinx.android.synthetic.main.fragment_home.*
 import kotlinx.android.synthetic.main.fragment_my_post.*
+import kotlinx.android.synthetic.main.searchtoolbar.*
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
@@ -37,7 +40,9 @@ class FavoriteFragment : Fragment() {
     }
     override fun onResume() {
         super.onResume()
+        search_text.setText("")
         loadData()
+
 
     }
 
@@ -78,7 +83,90 @@ class FavoriteFragment : Fragment() {
         })    }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        activity?.window?.setFlags(
+            WindowManager.LayoutParams.FLAG_NOT_TOUCHABLE,
+            WindowManager.LayoutParams.FLAG_NOT_TOUCHABLE);
 
+        search_text.addTextChangedListener(object : TextWatcher {
+
+            override fun afterTextChanged(s: Editable) {}
+
+            override fun beforeTextChanged(
+                s: CharSequence, start: Int,
+                count: Int, after: Int
+            ) {
+            }
+
+            override fun onTextChanged(
+                s: CharSequence, start: Int,
+                before: Int, count: Int
+            ) {
+
+
+                if (search_text.text.toString() != "") {
+                    mSharedPref = requireContext().getSharedPreferences(PREF_NAME, AppCompatActivity.MODE_PRIVATE);
+
+                    val apiInterface = ApiInterface.create()
+                    val map: HashMap<String, String> = HashMap()
+                    map["id"]=mSharedPref.getString(ID, "").toString()
+                    map["category"] = search_text.text.toString()
+                    apiInterface.searchfavorite(map).enqueue(object : Callback<MutableList<Catalogue>> {
+                        override fun onResponse(
+                            call: Call<MutableList<Catalogue>>,
+                            response: Response<MutableList<Catalogue>>
+                        ) {
+                            recylcerCatalogueAdapter = FavoriteAdapter(response.body()!!)
+                            recyclefavorite.adapter = recylcerCatalogueAdapter
+                            recyclefavorite.layoutManager = GridLayoutManager(context, 2)
+                            activity?.window?.clearFlags(WindowManager.LayoutParams.FLAG_NOT_TOUCHABLE);
+
+
+                        }
+
+                        override fun onFailure(call: Call<MutableList<Catalogue>>, t: Throwable) {
+                            Toast.makeText(activity, "Connexion error!", Toast.LENGTH_SHORT).show()
+                            activity?.window?.clearFlags(WindowManager.LayoutParams.FLAG_NOT_TOUCHABLE);
+
+                        }
+
+
+                    })
+                }
+                if (search_text.text.toString() == "") {
+                    mSharedPref = requireContext().getSharedPreferences(PREF_NAME, AppCompatActivity.MODE_PRIVATE);
+
+                    val apiInterface = ApiInterface.create()
+
+                    apiInterface.getFavorite(mSharedPref.getString(ID, "").toString()).enqueue(object : Callback<MutableList<Catalogue>> {
+                        override fun onResponse(call: Call<MutableList<Catalogue>>, response: Response<MutableList<Catalogue>>
+                        ) {
+
+                            recylcerCatalogueAdapter = FavoriteAdapter(response.body()!!)
+                            recyclefavorite.adapter = recylcerCatalogueAdapter
+                            recyclefavorite.layoutManager = GridLayoutManager(context, 2)
+                            activity?.window?.clearFlags(WindowManager.LayoutParams.FLAG_NOT_TOUCHABLE);
+
+                            if (recylcerCatalogueAdapter.itemCount == 0) {
+                                nofavorite.text = "No Favorite !"
+                            }
+                            else{
+                                nofavorite.text = ""
+
+                            }
+                        }
+
+                        override fun onFailure(call: Call<MutableList<Catalogue>>, t: Throwable) {
+                            Toast.makeText(activity, t.toString(), Toast.LENGTH_SHORT).show()
+                            activity?.window?.clearFlags(WindowManager.LayoutParams.FLAG_NOT_TOUCHABLE);
+
+                        }
+
+
+                    })
+
+                }
+            }
+        })
     }
 
 

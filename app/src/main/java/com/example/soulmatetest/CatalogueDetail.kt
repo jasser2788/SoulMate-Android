@@ -98,7 +98,6 @@ class CatalogueDetail : AppCompatActivity() {
 
                         finish()
                         window.clearFlags(WindowManager.LayoutParams.FLAG_NOT_TOUCHABLE);
-
                     }
                     else
                     {
