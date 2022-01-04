@@ -3,6 +3,7 @@ package com.example.soulmatetest.fragments
 import android.os.Bundle
 import android.text.Editable
 import android.text.TextWatcher
+import android.util.TypedValue
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
@@ -19,6 +20,7 @@ import com.example.soulmatetest.models.Catalogue
 import com.example.soulmatetest.utils.ApiInterface
 import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.fragment_home.*
+import kotlinx.android.synthetic.main.fragment_my_post.*
 import kotlinx.android.synthetic.main.searchtoolbar.*
 import retrofit2.Call
 import retrofit2.Callback
@@ -43,7 +45,14 @@ class HomeFragment : Fragment() {
 
     override fun onResume() {
         super.onResume()
+            activity?.window?.setFlags(
+                WindowManager.LayoutParams.FLAG_NOT_TOUCHABLE,
+                WindowManager.LayoutParams.FLAG_NOT_TOUCHABLE
+            );
+        noposthome.text = ""
+
         search_text.setText("")
+
 
     }
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -68,7 +77,9 @@ class HomeFragment : Fragment() {
                     before: Int, count: Int
                 ) {
 
-
+                    if (search_text.text.toString() != "") {
+                        noposthome.text = ""
+                    }
                     if (search_text.text.toString() != "") {
                     val apiInterface = ApiInterface.create()
                     val map: HashMap<String, String> = HashMap()
@@ -79,11 +90,27 @@ class HomeFragment : Fragment() {
                             call: Call<MutableList<Catalogue>>,
                             response: Response<MutableList<Catalogue>>
                         ) {
-                            activity?.window?.clearFlags(WindowManager.LayoutParams.FLAG_NOT_TOUCHABLE);
 
-                            recylcerCatalogueAdapter = CatalogueAdapter(response.body()!!)
-                            myrecycleView.adapter = recylcerCatalogueAdapter
-                            myrecycleView.layoutManager = GridLayoutManager(context, 2)
+
+                                if(isAdded) {
+                                    recylcerCatalogueAdapter = CatalogueAdapter(response.body()!!)
+                                    myrecycleView.adapter = recylcerCatalogueAdapter
+                                    myrecycleView.layoutManager = GridLayoutManager(context, 2)
+                                    if (recylcerCatalogueAdapter.itemCount == 0) {
+                                        noposthome.setTextSize(TypedValue.COMPLEX_UNIT_SP, 15.toFloat());
+
+                                        noposthome.text = search_text.text.toString() +" Does not exist!"
+                                    }
+                                    else
+                                    {
+                                        noposthome.text =""
+                                        noposthome.setTextSize(TypedValue.COMPLEX_UNIT_SP, 50.toFloat());
+
+                                    }
+                                }
+                                activity?.window?.clearFlags(WindowManager.LayoutParams.FLAG_NOT_TOUCHABLE);
+
+
 
 
                         }
@@ -105,11 +132,25 @@ class HomeFragment : Fragment() {
                             override fun onResponse(
                                 call: Call<MutableList<Catalogue>>, response: Response<MutableList<Catalogue>>
                             ) {
+                                    if(isAdded) {
 
-                                recylcerCatalogueAdapter = CatalogueAdapter(response.body()!!)
-                                myrecycleView.adapter = recylcerCatalogueAdapter
-                                myrecycleView.layoutManager = GridLayoutManager(context, 2)
-                                activity?.window?.clearFlags(WindowManager.LayoutParams.FLAG_NOT_TOUCHABLE);
+                                        recylcerCatalogueAdapter =
+                                            CatalogueAdapter(response.body()!!)
+                                        myrecycleView.adapter = recylcerCatalogueAdapter
+                                        myrecycleView.layoutManager = GridLayoutManager(context, 2)
+                                        if (recylcerCatalogueAdapter.itemCount == 0) {
+                                            noposthome.setTextSize(TypedValue.COMPLEX_UNIT_SP, 50.toFloat());
+
+                                            noposthome.text = "No Offers Yet!"
+                                        }
+                                        else {
+                                            noposthome.text = ""
+
+                                        }
+                                    }
+                                    activity?.window?.clearFlags(WindowManager.LayoutParams.FLAG_NOT_TOUCHABLE);
+
+
 
                             }
 
@@ -136,11 +177,25 @@ class HomeFragment : Fragment() {
             override fun onResponse(
                 call: Call<MutableList<Catalogue>>, response: Response<MutableList<Catalogue>>
             ) {
+                    if(isAdded) {
 
-                recylcerCatalogueAdapter = CatalogueAdapter(response.body()!!)
-                myrecycleView.adapter = recylcerCatalogueAdapter
-                myrecycleView.layoutManager = GridLayoutManager(context, 2)
-                activity?.window?.clearFlags(WindowManager.LayoutParams.FLAG_NOT_TOUCHABLE);
+                        recylcerCatalogueAdapter = CatalogueAdapter(response.body()!!)
+                        myrecycleView.adapter = recylcerCatalogueAdapter
+                        myrecycleView.layoutManager = GridLayoutManager(context, 2)
+
+                        if (recylcerCatalogueAdapter.itemCount == 0) {
+                            noposthome.setTextSize(TypedValue.COMPLEX_UNIT_SP, 50.toFloat());
+
+                            noposthome.text = "No Offers Yet!"
+                        } else
+                        {
+                            noposthome.text = ""
+
+                        }
+                    }
+                    activity?.window?.clearFlags(WindowManager.LayoutParams.FLAG_NOT_TOUCHABLE);
+
+
 
             }
 

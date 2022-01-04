@@ -26,6 +26,7 @@ import com.google.firebase.ktx.Firebase
 import com.google.firebase.storage.FirebaseStorage
 import com.google.firebase.storage.ktx.storage
 import io.getstream.chat.android.client.ChatClient
+import kotlinx.android.synthetic.main.activity_catalogue_user_detail.*
 import kotlinx.android.synthetic.main.fragment_user.*
 import retrofit2.Call
 import retrofit2.Callback
@@ -89,6 +90,16 @@ class UserFragment : Fragment() {
         mSharedPref = requireContext().getSharedPreferences(PREF_NAME, AppCompatActivity.MODE_PRIVATE);
         usernameProfile.setText(mSharedPref.getString(USERNAME, "").toString())
 
+        updatepass.setOnClickListener() {
+            updatepass.isClickable = false
+            val intent = Intent (context, ChangePassword::class.java)
+            context?.startActivity(intent)
+        }
+        updateusername.setOnClickListener(){
+            updateusername.isClickable = false
+            val intent = Intent (context, ChangeUsername::class.java)
+            context?.startActivity(intent)
+        }
         logoutbtn.setOnClickListener(){
             val builder = AlertDialog.Builder(view.context)
             builder.setTitle("Logout")
@@ -108,11 +119,23 @@ class UserFragment : Fragment() {
         }
 
         imageuser.setOnClickListener(){
+            imageuser.isClickable=false
+
             openGallery()
         }
 
     }
 
+    override fun onResume() {
+        super.onResume()
+
+        updateusername.isClickable = true
+        updatepass.isClickable = true
+
+        imageuser.isClickable=true
+        mSharedPref = requireContext().getSharedPreferences(PREF_NAME, AppCompatActivity.MODE_PRIVATE);
+        usernameProfile.setText(mSharedPref.getString(USERNAME, "").toString())
+    }
 
     private fun openGallery() {
         val intent = Intent()
@@ -166,7 +189,7 @@ class UserFragment : Fragment() {
 
    private fun saveImageChat(formater : String) {
         userchat = io.getstream.chat.android.client.models.User(
-            id = mSharedPref.getString(USERNAME, "").toString(),
+            id = mSharedPref.getString(ID, "").toString(),
             extraData = mutableMapOf(
                 "name" to mSharedPref.getString(USERNAME, "").toString(),
                 "image" to "https://firebasestorage.googleapis.com/v0/b/soulmate-fce7d.appspot.com/o/images%2F" + formater + "?alt=media"

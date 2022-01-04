@@ -10,6 +10,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.soulmatetest.databinding.UserRowLayoutBinding
 import io.getstream.chat.android.client.ChatClient
 import io.getstream.chat.android.client.models.User
+import io.getstream.chat.android.client.models.name
 
 class ChatAdapter  : RecyclerView.Adapter<ChatAdapter.MyViewHolder>() {
 
@@ -32,7 +33,7 @@ class ChatAdapter  : RecyclerView.Adapter<ChatAdapter.MyViewHolder>() {
         val currentUser = userList[position]
 
         holder.binding.avatarImageView.setUserData(currentUser)
-        holder.binding.usernameTextView.text = currentUser.id
+        holder.binding.usernameTextView.text = currentUser.name
         holder.binding.lastActiveTextView.text = convertDate(currentUser.lastActive!!.time)
         holder.binding.rootLayout.setOnClickListener {
             createNewChannel(currentUser.id, holder)

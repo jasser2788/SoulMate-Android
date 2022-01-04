@@ -17,6 +17,7 @@ class FavoriteAdapter(val catlogueList: MutableList<Catalogue> ): RecyclerView.A
 
     override fun onBindViewHolder(holder: CatalogueViewHolder, position: Int) {
 
+        holder.itemView.isClickable = true
 
         var filename : String
         val current = catlogueList[position]
@@ -29,13 +30,15 @@ class FavoriteAdapter(val catlogueList: MutableList<Catalogue> ): RecyclerView.A
                 .into(imageCatalogue)
 
             //holder.picture.setImageResource(current.picture)
-            holder.category.text = "Category: "+current.category
+            holder.category.text = "Offer: "+current.category
             holder.name.text = current.nom
             //holder.ownerPic.setImageResource(current.ownerPic)
             // val manager = (holder.itemView.context as FragmentActivity).supportFragmentManager
             holder.itemView.setOnClickListener(){
                 val intent = Intent(holder.itemView.context, FavoriteDetail::class.java)
                 intent.apply {
+                    holder.itemView.isClickable = false
+
                     putExtra("_id",current.id)
                     putExtra("picture",current.picture)
                     putExtra("owner",current.nom)

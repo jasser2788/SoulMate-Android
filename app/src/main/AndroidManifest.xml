@@ -15,6 +15,12 @@
         android:theme="@style/Theme.SoulMateTest"
         android:usesCleartextTraffic="true">
         <activity
+            android:name=".ChangePassword"
+            android:exported="true" />
+        <activity
+            android:name=".ChangeUsername"
+            android:exported="true" />
+        <activity
             android:name=".AllUsersChat"
             android:exported="true" />
         <activity

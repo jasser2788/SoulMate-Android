@@ -43,15 +43,25 @@ class CatalogueUserDetail : AppCompatActivity() {
             delete()
         }
         updateDU.setOnClickListener(){
+            if(validate())
             update();
         }
         imageDU.setOnClickListener(){
+            imageDU.isClickable=false
             openGallery()
         }
         TopHeaderView3.setBackButtonClickListener(){
             onBackPressed()
 
         }
+    }
+
+    override fun onResume() {
+        super.onResume()
+        imageDU.isClickable=true
+
+
+
     }
     private fun openGallery() {
         val intent = Intent()
@@ -105,40 +115,61 @@ class CatalogueUserDetail : AppCompatActivity() {
         builder.setTitle("Logout")
         builder.setMessage("Are you sure you want to delete your post ?")
         builder.setPositiveButton("Yes") { dialogInterface, which ->
-            window.setFlags(WindowManager.LayoutParams.FLAG_NOT_TOUCHABLE,
-                WindowManager.LayoutParams.FLAG_NOT_TOUCHABLE);
+            var test = true
+            if (test == true) {
+                test= false
 
-            apiInterface.deleteCatalogue(intent.getStringExtra("id").toString()).enqueue(object :
-                Callback<Catalogue> {
+                window.setFlags(
+                    WindowManager.LayoutParams.FLAG_NOT_TOUCHABLE,
+                    WindowManager.LayoutParams.FLAG_NOT_TOUCHABLE
+                );
 
-                override fun onResponse(call: Call<Catalogue>, response: Response<Catalogue>) {
-                    val catalogue = response.body()
-                    if (catalogue != null) {
+                apiInterface.deleteCatalogue(intent.getStringExtra("id").toString())
+                    .enqueue(object :
+                        Callback<Catalogue> {
 
-                        Toast.makeText(
-                            this@CatalogueUserDetail,
-                            "deleted successfully",
-                            Toast.LENGTH_SHORT
-                        ).show()
-                        window.clearFlags(WindowManager.LayoutParams.FLAG_NOT_TOUCHABLE);
+                        override fun onResponse(
+                            call: Call<Catalogue>,
+                            response: Response<Catalogue>
+                        ) {
+                            val catalogue = response.body()
+                            if (catalogue != null) {
 
-                        finish()
+                                Toast.makeText(
+                                    this@CatalogueUserDetail,
+                                    "deleted successfully",
+                                    Toast.LENGTH_SHORT
+                                ).show()
+                                window.clearFlags(WindowManager.LayoutParams.FLAG_NOT_TOUCHABLE);
+test= true
+                                finish()
 
 
-                    } else {
-                        Toast.makeText(this@CatalogueUserDetail, "error!", Toast.LENGTH_SHORT)
-                            .show()
-                        window.clearFlags(WindowManager.LayoutParams.FLAG_NOT_TOUCHABLE);
+                            } else {
+                                Toast.makeText(
+                                    this@CatalogueUserDetail,
+                                    "error!",
+                                    Toast.LENGTH_SHORT
+                                )
+                                    .show()
+                                window.clearFlags(WindowManager.LayoutParams.FLAG_NOT_TOUCHABLE);
+                                test= true
 
-                    }
-                }
+                            }
+                        }
 
-                override fun onFailure(call: Call<Catalogue>, t: Throwable) {
-                    Toast.makeText(this@CatalogueUserDetail, t.toString(), Toast.LENGTH_LONG).show()
-                    window.clearFlags(WindowManager.LayoutParams.FLAG_NOT_TOUCHABLE);
+                        override fun onFailure(call: Call<Catalogue>, t: Throwable) {
+                            Toast.makeText(
+                                this@CatalogueUserDetail,
+                                t.toString(),
+                                Toast.LENGTH_LONG
+                            ).show()
+                            window.clearFlags(WindowManager.LayoutParams.FLAG_NOT_TOUCHABLE);
+                            test= true
 
-                }
-            })
+                        }
+                    })
+            }
         }
         builder.setNegativeButton("No") { dialogInterface, which ->
             dialogInterface.dismiss()
@@ -191,6 +222,43 @@ class CatalogueUserDetail : AppCompatActivity() {
             }
         })
     }
+    private fun validate(): Boolean {
+        descriptionDUtxt.error = null
+        categoryDUtxt.error = null
+
+        if (descriptionDUtxt.length()< 10){
+            descriptionDUtxt.error = "Minimum 10 Characters"
+
+            return false
+        }
+        else descriptionDUtxt.error= null
+
+        if (descriptionDUtxt.text!!.isEmpty()){
+            descriptionDUtxt.error = "Must No tBe Empty"
+
+            return false
+        }
+        else descriptionDUtxt.error= null
+
+
+
+        if (categoryDUtxt.text!!.isEmpty()){
+            categoryDUtxt.error = "Must No tBe Empty"
+
+            return false
+        }
+        else categoryDUtxt.error= null
+
+        if (categoryDUtxt.length()< 3){
+            categoryDUtxt.error = "Minimum 3 Characters"
+
+            return false
+        }
+        else categoryDUtxt.error= null
+
+        return true
+    }
+
 
 }
 

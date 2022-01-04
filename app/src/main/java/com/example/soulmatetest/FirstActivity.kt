@@ -45,7 +45,7 @@ class FirstActivity : AppCompatActivity() {
 
 
         userchat = io.getstream.chat.android.client.models.User(
-            id = mSharedPref.getString(USERNAME,"").toString(),
+            id = mSharedPref.getString(ID,"").toString(),
             extraData = mutableMapOf(
                 "name" to mSharedPref.getString(USERNAME,"").toString(),
                 "image" to "https://firebasestorage.googleapis.com/v0/b/soulmate-fce7d.appspot.com/o/images%2F" + mSharedPref.getString(PICTURE,"").toString() + "?alt=media"

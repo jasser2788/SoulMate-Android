@@ -55,12 +55,21 @@ class CatalogueDetail : AppCompatActivity() {
         descriptionDtxt.text = intent.getStringExtra("description")
 
         favoriteBtn.setOnClickListener(){
+            favoriteBtn.isClickable = false
             Favorite()
         }
         startChatBtn.setOnClickListener()
         {
+            startChatBtn.isClickable = false
             startChat(intent.getStringExtra("owner").toString())
         }
+    }
+
+    override fun onResume() {
+        super.onResume()
+        favoriteBtn.isClickable = true
+        startChatBtn.isClickable = true
+
     }
 
     private fun startChat(selectedUser: String) {
@@ -102,6 +111,8 @@ class CatalogueDetail : AppCompatActivity() {
                     else
                     {
                         Toast.makeText(this@CatalogueDetail,"Already in favorite !", Toast.LENGTH_SHORT).show()
+                        favoriteBtn.isClickable = true
+
                         window.clearFlags(WindowManager.LayoutParams.FLAG_NOT_TOUCHABLE);
 
                     }

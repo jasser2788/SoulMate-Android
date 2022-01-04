@@ -21,6 +21,7 @@ class CatalogueUserAdapter (val catlogueList: MutableList<Catalogue> ): Recycler
 
     override fun onBindViewHolder(holder: CatalogueViewHolder, position: Int) {
 
+        holder.itemView.isClickable = true
 
         var filename : String
         var filename2 : String
@@ -43,11 +44,12 @@ class CatalogueUserAdapter (val catlogueList: MutableList<Catalogue> ): Recycler
         .into(ownerPic)*/
 
             //holder.picture.setImageResource(current.picture)
-            holder.category.text = "Category: "+current.category
+            holder.category.text = "Offer: "+current.category
             holder.name.text = current.nom
             //holder.ownerPic.setImageResource(current.ownerPic)
             // val manager = (holder.itemView.context as FragmentActivity).supportFragmentManager
             holder.itemView.setOnClickListener(){
+                holder.itemView.isClickable = false
                 val intent = Intent(holder.itemView.context, CatalogueUserDetail::class.java)
                 intent.apply {
                     putExtra("id",current.id)

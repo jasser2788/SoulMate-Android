@@ -47,16 +47,27 @@ class FavoriteDetail : AppCompatActivity() {
 
 
         removeFbtn.setOnClickListener(){
+            removeFbtn.isClickable = false
             remove()
         }
 
         chatBtn.setOnClickListener(){
+            chatBtn.isClickable = false
+
             startchat(intent.getStringExtra("owner").toString())
         }
         TopHeaderView2.setBackButtonClickListener(){
             onBackPressed()
 
         }
+    }
+
+    override fun onResume() {
+        super.onResume()
+        removeFbtn.isClickable = true
+        chatBtn.isClickable = true
+
+
     }
 
     private fun startchat(selectedUser:String) {

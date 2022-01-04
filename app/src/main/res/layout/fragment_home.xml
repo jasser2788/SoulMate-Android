@@ -31,6 +31,17 @@
         app:layout_constraintStart_toEndOf="@+id/searchtoolbar"
         app:layout_constraintTop_toBottomOf="@+id/searchtoolbar">
 
+
     </androidx.recyclerview.widget.RecyclerView>
+
+    <TextView
+        android:id="@+id/noposthome"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="50dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="@+id/myrecycleView"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/myrecycleView" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -4,6 +4,7 @@ import android.content.SharedPreferences
 import android.os.Bundle
 import android.text.Editable
 import android.text.TextWatcher
+import android.util.TypedValue
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
@@ -40,8 +41,14 @@ class FavoriteFragment : Fragment() {
     }
     override fun onResume() {
         super.onResume()
+            activity?.window?.setFlags(
+                WindowManager.LayoutParams.FLAG_NOT_TOUCHABLE,
+                WindowManager.LayoutParams.FLAG_NOT_TOUCHABLE
+            );
+        nofavorite.text = ""
+
         search_text.setText("")
-        loadData()
+            loadData()
 
 
     }
@@ -58,20 +65,30 @@ class FavoriteFragment : Fragment() {
         apiInterface.getFavorite(mSharedPref.getString(ID, "").toString()).enqueue(object : Callback<MutableList<Catalogue>> {
             override fun onResponse(call: Call<MutableList<Catalogue>>, response: Response<MutableList<Catalogue>>
             ) {
+                    if(isAdded) {
 
-                recylcerCatalogueAdapter = FavoriteAdapter(response.body()!!)
-                recyclefavorite.adapter = recylcerCatalogueAdapter
-                recyclefavorite.layoutManager = GridLayoutManager(context, 2)
-                activity?.window?.clearFlags(WindowManager.LayoutParams.FLAG_NOT_TOUCHABLE);
+                        recylcerCatalogueAdapter = FavoriteAdapter(response.body()!!)
+                        recyclefavorite.adapter = recylcerCatalogueAdapter
+                        recyclefavorite.layoutManager = GridLayoutManager(context, 2)
 
-                if (recylcerCatalogueAdapter.itemCount == 0) {
-                    nofavorite.text = "No Favorite !"
+                        if (recylcerCatalogueAdapter.itemCount == 0) {
+                            nofavorite.setTextSize(TypedValue.COMPLEX_UNIT_SP, 50.toFloat());
+
+                            nofavorite.text = "No Favorite !"
+                        }
+                        else {
+                            nofavorite.text = ""
+
+                            nofavorite.setTextSize(TypedValue.COMPLEX_UNIT_SP, 50.toFloat());
+
+                        }
+                    }
+                    activity?.window?.clearFlags(WindowManager.LayoutParams.FLAG_NOT_TOUCHABLE);
+
+
+
+
                 }
-                else{
-                    nofavorite.text = ""
-
-                }
-            }
 
             override fun onFailure(call: Call<MutableList<Catalogue>>, t: Throwable) {
                 Toast.makeText(activity, t.toString(), Toast.LENGTH_SHORT).show()
@@ -102,7 +119,9 @@ class FavoriteFragment : Fragment() {
                 before: Int, count: Int
             ) {
 
-
+                if (search_text.text.toString() != "") {
+                    nofavorite.text = ""
+                }
                 if (search_text.text.toString() != "") {
                     mSharedPref = requireContext().getSharedPreferences(PREF_NAME, AppCompatActivity.MODE_PRIVATE);
 
@@ -115,10 +134,25 @@ class FavoriteFragment : Fragment() {
                             call: Call<MutableList<Catalogue>>,
                             response: Response<MutableList<Catalogue>>
                         ) {
-                            recylcerCatalogueAdapter = FavoriteAdapter(response.body()!!)
-                            recyclefavorite.adapter = recylcerCatalogueAdapter
-                            recyclefavorite.layoutManager = GridLayoutManager(context, 2)
-                            activity?.window?.clearFlags(WindowManager.LayoutParams.FLAG_NOT_TOUCHABLE);
+                             if(isAdded) {
+                                 recylcerCatalogueAdapter = FavoriteAdapter(response.body()!!)
+                                 recyclefavorite.adapter = recylcerCatalogueAdapter
+                                 recyclefavorite.layoutManager = GridLayoutManager(context, 2)
+                                 if (recylcerCatalogueAdapter.itemCount == 0) {
+                                     nofavorite.setTextSize(TypedValue.COMPLEX_UNIT_SP, 15.toFloat());
+
+                                     nofavorite.text = search_text.text.toString() + " Does Not Exist !"
+                                 }
+                                 else {
+                                     nofavorite.text = ""
+
+                                     nofavorite.setTextSize(TypedValue.COMPLEX_UNIT_SP, 50.toFloat());
+
+                                 }
+                             }
+                                activity?.window?.clearFlags(WindowManager.LayoutParams.FLAG_NOT_TOUCHABLE);
+
+
 
 
                         }
@@ -140,19 +174,27 @@ class FavoriteFragment : Fragment() {
                     apiInterface.getFavorite(mSharedPref.getString(ID, "").toString()).enqueue(object : Callback<MutableList<Catalogue>> {
                         override fun onResponse(call: Call<MutableList<Catalogue>>, response: Response<MutableList<Catalogue>>
                         ) {
+                                if(isAdded) {
 
-                            recylcerCatalogueAdapter = FavoriteAdapter(response.body()!!)
-                            recyclefavorite.adapter = recylcerCatalogueAdapter
-                            recyclefavorite.layoutManager = GridLayoutManager(context, 2)
-                            activity?.window?.clearFlags(WindowManager.LayoutParams.FLAG_NOT_TOUCHABLE);
+                                    recylcerCatalogueAdapter = FavoriteAdapter(response.body()!!)
+                                    recyclefavorite.adapter = recylcerCatalogueAdapter
+                                    recyclefavorite.layoutManager = GridLayoutManager(context, 2)
 
-                            if (recylcerCatalogueAdapter.itemCount == 0) {
-                                nofavorite.text = "No Favorite !"
-                            }
-                            else{
-                                nofavorite.text = ""
 
-                            }
+
+                                    if (recylcerCatalogueAdapter.itemCount == 0) {
+                                        nofavorite.setTextSize(TypedValue.COMPLEX_UNIT_SP, 50.toFloat());
+
+                                        nofavorite.text = "No Favorite !"
+                                    } else
+                                    {
+                                        nofavorite.text = ""
+
+                                    }
+                                }
+                                activity?.window?.clearFlags(WindowManager.LayoutParams.FLAG_NOT_TOUCHABLE);
+
+
                         }
 
                         override fun onFailure(call: Call<MutableList<Catalogue>>, t: Throwable) {
@@ -168,6 +210,5 @@ class FavoriteFragment : Fragment() {
             }
         })
     }
-
 
 }

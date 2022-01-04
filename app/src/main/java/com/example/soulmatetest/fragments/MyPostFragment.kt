@@ -5,6 +5,7 @@ import android.content.SharedPreferences
 import android.os.Bundle
 import android.text.Editable
 import android.text.TextWatcher
+import android.util.TypedValue
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
@@ -17,6 +18,7 @@ import androidx.recyclerview.widget.GridLayoutManager
 import com.example.soulmatetest.*
 import com.example.soulmatetest.models.Catalogue
 import com.example.soulmatetest.utils.ApiInterface
+import kotlinx.android.synthetic.main.fragment_favorite.*
 import kotlinx.android.synthetic.main.fragment_home.*
 import kotlinx.android.synthetic.main.fragment_my_post.*
 import kotlinx.android.synthetic.main.fragment_user.*
@@ -41,8 +43,11 @@ class MyPostFragment : Fragment() {
 
     override fun onResume() {
         super.onResume()
+        btnAdd.isEnabled = true
+
         loadData()
         search_text.setText("")
+        nopost.text = ""
 
     }
 
@@ -61,19 +66,24 @@ class MyPostFragment : Fragment() {
         apiInterface.getUserCatalogue(map).enqueue(object : Callback<MutableList<Catalogue>> {
             override fun onResponse(call: Call<MutableList<Catalogue>>, response: Response<MutableList<Catalogue>>
             ) {
+                    if(isAdded) {
+                        recylcerCatalogueAdapter = CatalogueUserAdapter(response.body()!!)
+                        recycleUserPost.adapter = recylcerCatalogueAdapter
+                        recycleUserPost.layoutManager = GridLayoutManager(context, 2)
 
-                recylcerCatalogueAdapter = CatalogueUserAdapter(response.body()!!)
-                recycleUserPost.adapter = recylcerCatalogueAdapter
-                recycleUserPost.layoutManager = GridLayoutManager(context, 2)
-                activity?.window?.clearFlags(WindowManager.LayoutParams.FLAG_NOT_TOUCHABLE);
 
                 if (recylcerCatalogueAdapter.itemCount == 0) {
+                    nopost.setTextSize(TypedValue.COMPLEX_UNIT_SP, 50.toFloat());
+
                     nopost.text = "No posts yet !"
                 }
                 else{
                     nopost.text = ""
 
                 }
+                    }
+                activity?.window?.clearFlags(WindowManager.LayoutParams.FLAG_NOT_TOUCHABLE);
+
             }
 
             override fun onFailure(call: Call<MutableList<Catalogue>>, t: Throwable) {
@@ -90,6 +100,7 @@ class MyPostFragment : Fragment() {
 
 
         btnAdd.setOnClickListener(){
+            btnAdd.isEnabled = false
             val intent = Intent (context, AddPost::class.java)
             context?.startActivity(intent)
 
@@ -115,7 +126,9 @@ class MyPostFragment : Fragment() {
                 s: CharSequence, start: Int,
                 before: Int, count: Int
             ) {
-
+                if (search_text.text.toString() != "") {
+                    nopost.text = ""
+                }
 
                 if (search_text.text.toString() != "") {
                     mSharedPref = requireContext().getSharedPreferences(PREF_NAME, AppCompatActivity.MODE_PRIVATE);
@@ -131,10 +144,24 @@ class MyPostFragment : Fragment() {
                             call: Call<MutableList<Catalogue>>,
                             response: Response<MutableList<Catalogue>>
                         ) {
+                            if(isAdded) {
 
-                            recylcerCatalogueAdapter = CatalogueUserAdapter(response.body()!!)
-                            recycleUserPost.adapter = recylcerCatalogueAdapter
-                            recycleUserPost.layoutManager = GridLayoutManager(context, 2)
+                                recylcerCatalogueAdapter = CatalogueUserAdapter(response.body()!!)
+                                recycleUserPost.adapter = recylcerCatalogueAdapter
+                                recycleUserPost.layoutManager = GridLayoutManager(context, 2)
+                                if (recylcerCatalogueAdapter.itemCount == 0) {
+                                    nopost.setTextSize(TypedValue.COMPLEX_UNIT_SP, 15.toFloat());
+
+                                    nopost.text = search_text.text.toString() +" Does not exist!"
+                                }
+                                else {
+                                    nopost.text = ""
+
+                                    nopost.setTextSize(TypedValue.COMPLEX_UNIT_SP, 50.toFloat());
+
+                                }
+
+                            }
                             activity?.window?.clearFlags(WindowManager.LayoutParams.FLAG_NOT_TOUCHABLE);
 
 
@@ -160,19 +187,25 @@ class MyPostFragment : Fragment() {
                     apiInterface.getUserCatalogue(map).enqueue(object : Callback<MutableList<Catalogue>> {
                         override fun onResponse(call: Call<MutableList<Catalogue>>, response: Response<MutableList<Catalogue>>
                         ) {
+                            if(isAdded) {
 
-                            recylcerCatalogueAdapter = CatalogueUserAdapter(response.body()!!)
-                            recycleUserPost.adapter = recylcerCatalogueAdapter
-                            recycleUserPost.layoutManager = GridLayoutManager(context, 2)
-                            activity?.window?.clearFlags(WindowManager.LayoutParams.FLAG_NOT_TOUCHABLE);
+                                recylcerCatalogueAdapter = CatalogueUserAdapter(response.body()!!)
+                                recycleUserPost.adapter = recylcerCatalogueAdapter
+                                recycleUserPost.layoutManager = GridLayoutManager(context, 2)
 
                             if (recylcerCatalogueAdapter.itemCount == 0) {
+                                nopost.setTextSize(TypedValue.COMPLEX_UNIT_SP, 50.toFloat());
+
                                 nopost.text = "No posts yet !"
                             }
                             else{
                                 nopost.text = ""
 
                             }
+                            }
+
+                            activity?.window?.clearFlags(WindowManager.LayoutParams.FLAG_NOT_TOUCHABLE);
+
                         }
 
                         override fun onFailure(call: Call<MutableList<Catalogue>>, t: Throwable) {

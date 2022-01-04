@@ -193,7 +193,7 @@ class Login : AppCompatActivity() {
 
 
         userchat = io.getstream.chat.android.client.models.User(
-            id = user.username,
+            id = user.id,
             extraData = mutableMapOf(
                 "name" to user.username,
                 "image" to "https://firebasestorage.googleapis.com/v0/b/soulmate-fce7d.appspot.com/o/images%2F" + user.picture + "?alt=media"

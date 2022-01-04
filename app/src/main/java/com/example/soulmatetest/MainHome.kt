@@ -60,4 +60,6 @@ class MainHome : AppCompatActivity() {
             addToBackStack("")
             commit()
         }
+    override fun onBackPressed() {
+    }
     }
