@@ -19,17 +19,18 @@
         <entry key="..\:/Users/JASSER/AndroidStudioProjects/SoulMateTest/app/src/main/res/drawable/ic_post.xml" value="0.18697916666666667" />
         <entry key="..\:/Users/JASSER/AndroidStudioProjects/SoulMateTest/app/src/main/res/drawable/ic_profil.xml" value="0.18697916666666667" />
         <entry key="..\:/Users/JASSER/AndroidStudioProjects/SoulMateTest/app/src/main/res/drawable/ic_signout.xml" value="0.17291666666666666" />
+        <entry key="..\:/Users/JASSER/AndroidStudioProjects/SoulMateTest/app/src/main/res/drawable/round_border.xml" value="0.24375" />
         <entry key="..\:/Users/JASSER/AndroidStudioProjects/SoulMateTest/app/src/main/res/drawable/roundedit.xml" value="0.11822916666666666" />
         <entry key="..\:/Users/JASSER/AndroidStudioProjects/SoulMateTest/app/src/main/res/drawable/text_view.xml" value="0.17291666666666666" />
         <entry key="..\:/Users/JASSER/AndroidStudioProjects/SoulMateTest/app/src/main/res/layout/activity_add_post.xml" value="0.264" />
         <entry key="..\:/Users/JASSER/AndroidStudioProjects/SoulMateTest/app/src/main/res/layout/activity_all_users_chat.xml" value="0.12760416666666666" />
         <entry key="..\:/Users/JASSER/AndroidStudioProjects/SoulMateTest/app/src/main/res/layout/activity_catalogue_detail.xml" value="0.264" />
-        <entry key="..\:/Users/JASSER/AndroidStudioProjects/SoulMateTest/app/src/main/res/layout/activity_catalogue_user_detail.xml" value="0.264" />
-        <entry key="..\:/Users/JASSER/AndroidStudioProjects/SoulMateTest/app/src/main/res/layout/activity_change_password.xml" value="0.4" />
-        <entry key="..\:/Users/JASSER/AndroidStudioProjects/SoulMateTest/app/src/main/res/layout/activity_change_username.xml" value="0.12135416666666667" />
+        <entry key="..\:/Users/JASSER/AndroidStudioProjects/SoulMateTest/app/src/main/res/layout/activity_catalogue_user_detail.xml" value="0.2" />
+        <entry key="..\:/Users/JASSER/AndroidStudioProjects/SoulMateTest/app/src/main/res/layout/activity_change_password.xml" value="0.2" />
+        <entry key="..\:/Users/JASSER/AndroidStudioProjects/SoulMateTest/app/src/main/res/layout/activity_change_username.xml" value="0.2" />
         <entry key="..\:/Users/JASSER/AndroidStudioProjects/SoulMateTest/app/src/main/res/layout/activity_favorite_detail.xml" value="0.264" />
         <entry key="..\:/Users/JASSER/AndroidStudioProjects/SoulMateTest/app/src/main/res/layout/activity_first.xml" value="0.15260416666666668" />
-        <entry key="..\:/Users/JASSER/AndroidStudioProjects/SoulMateTest/app/src/main/res/layout/activity_login.xml" value="0.30191256830601093" />
+        <entry key="..\:/Users/JASSER/AndroidStudioProjects/SoulMateTest/app/src/main/res/layout/activity_login.xml" value="0.176" />
         <entry key="..\:/Users/JASSER/AndroidStudioProjects/SoulMateTest/app/src/main/res/layout/activity_login_and_signup.xml" value="0.15534420289855072" />
         <entry key="..\:/Users/JASSER/AndroidStudioProjects/SoulMateTest/app/src/main/res/layout/activity_main.xml" value="0.13636363636363635" />
         <entry key="..\:/Users/JASSER/AndroidStudioProjects/SoulMateTest/app/src/main/res/layout/activity_main_home.xml" value="0.264" />

@@ -61,7 +61,7 @@ class CatalogueDetail : AppCompatActivity() {
         startChatBtn.setOnClickListener()
         {
             startChatBtn.isClickable = false
-            startChat(intent.getStringExtra("owner").toString())
+            startChat(intent.getStringExtra("user_id").toString())
         }
     }
 

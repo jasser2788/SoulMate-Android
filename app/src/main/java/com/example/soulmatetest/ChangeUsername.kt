@@ -5,7 +5,9 @@ import android.content.SharedPreferences
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
+import android.view.WindowManager
 import android.widget.Toast
+import com.example.soulmatetest.models.Catalogue
 import com.example.soulmatetest.models.User
 import com.example.soulmatetest.utils.ApiInterface
 import io.getstream.chat.android.client.ChatClient
@@ -35,12 +37,14 @@ class ChangeUsername : AppCompatActivity() {
     }
 
     private fun changeusername() {
-
+        window?.setFlags(
+            WindowManager.LayoutParams.FLAG_NOT_TOUCHABLE,
+            WindowManager.LayoutParams.FLAG_NOT_TOUCHABLE);
 
         val apiInterface = ApiInterface.create()
 
         val map:HashMap<String, String> = HashMap()
-        mSharedPref = getSharedPreferences(PREF_NAME, AppCompatActivity.MODE_PRIVATE);
+        mSharedPref = getSharedPreferences(PREF_NAME, MODE_PRIVATE);
         map["username"]=newusernametxt.text.toString()
         apiInterface.update(mSharedPref.getString(ID,"").toString(),map).enqueue(object : Callback<User> {
 
@@ -55,11 +59,15 @@ class ChangeUsername : AppCompatActivity() {
                         putString(USERNAME, user.username)
 
                     }.apply()
+                    window?.clearFlags(WindowManager.LayoutParams.FLAG_NOT_TOUCHABLE);
+
                     saveUsernameChat()
+                    updatecatalogue()
                     finish()
 
                 }else{
                     Toast.makeText(this@ChangeUsername, "Username already exist", Toast.LENGTH_SHORT).show()
+                    window?.clearFlags(WindowManager.LayoutParams.FLAG_NOT_TOUCHABLE);
 
                 }
 
@@ -69,6 +77,7 @@ class ChangeUsername : AppCompatActivity() {
 
             override fun onFailure(call: Call<User>, t: Throwable) {
                 Toast.makeText(this@ChangeUsername, "Connexion error!", Toast.LENGTH_SHORT).show()
+                window?.clearFlags(WindowManager.LayoutParams.FLAG_NOT_TOUCHABLE);
 
                 /* progBar.visibility = View.INVISIBLE
                  window.clearFlags( WindowManager.LayoutParams.FLAG_NOT_TOUCHABLE)*/
@@ -77,11 +86,41 @@ class ChangeUsername : AppCompatActivity() {
         })
     }
 
+    private fun updatecatalogue() {
+
+        val apiInterface = ApiInterface.create()
+        val map: java.util.HashMap<String, String> = java.util.HashMap()
+        mSharedPref = getSharedPreferences(PREF_NAME, MODE_PRIVATE);
+
+        map["username"] = newusernametxt.text.toString()
+        map["user_id"]=mSharedPref.getString(ID,"").toString()
+
+
+
+
+        apiInterface.updateNameCatalogue(map).enqueue(object :
+            Callback<Catalogue> {
+
+            override fun onResponse(call: Call<Catalogue>, response: Response<Catalogue>) {
+                val catalogue = response.body()
+
+            }
+
+            override fun onFailure(call: Call<Catalogue>, t: Throwable) {
+
+
+            }
+        })
+
+    }
+
     private fun saveUsernameChat() {
         userchat = io.getstream.chat.android.client.models.User(
             id = mSharedPref.getString(ID, "").toString(),
             extraData = mutableMapOf(
-                "name" to mSharedPref.getString(USERNAME, "").toString()
+                "name" to mSharedPref.getString(USERNAME, "").toString(),
+                "image" to "https://firebasestorage.googleapis.com/v0/b/soulmate-fce7d.appspot.com/o/images%2F" + mSharedPref.getString(PICTURE, "").toString() + "?alt=media"
+
 
             )
         )
@@ -98,21 +137,22 @@ class ChangeUsername : AppCompatActivity() {
         }
     }
     private fun validate(): Boolean {
-        newusernametxt.error = null
+        newusernametxtLayout.error = null
+        newusernametxt.setText(newusernametxt.text?.replace("\\s+".toRegex(), " ")?.trim())
 
         if (newusernametxt.length()< 4){
-            newusernametxt.error = "Minimum 4 Characters"
+            newusernametxtLayout.error = "Minimum 4 Characters"
 
             return false
         }
-        else newusernametxt.error= null
+        else newusernametxtLayout.error= null
 
         if (newusernametxt.text!!.isEmpty()){
-            newusernametxt.error = "Must No tBe Empty"
+            newusernametxtLayout.error = "Must No tBe Empty"
 
             return false
         }
-        else newusernametxt.error= null
+        else newusernametxtLayout.error= null
 
 
 

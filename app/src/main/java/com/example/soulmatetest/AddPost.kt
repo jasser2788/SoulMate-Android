@@ -16,6 +16,7 @@ import com.example.soulmatetest.utils.ApiInterface
 import com.google.firebase.storage.FirebaseStorage
 import kotlinx.android.synthetic.main.activity_add_post.*
 import kotlinx.android.synthetic.main.activity_catalogue_detail.*
+import kotlinx.android.synthetic.main.activity_change_username.*
 import kotlinx.android.synthetic.main.fragment_user.*
 import retrofit2.Call
 import retrofit2.Callback
@@ -142,38 +143,40 @@ class AddPost : AppCompatActivity() {
     }
 
     private fun validate(): Boolean {
-        categorytxt.error = null
-        descriptiontxt.error = null
+        categorytxtLayout.error = null
+        descriptiontxtLayout.error = null
+        categorytxt.setText(categorytxt.text?.replace("\\s+".toRegex(), " ")?.trim())
+        descriptiontxt.setText(descriptiontxt.text?.replace("\\s+".toRegex(), " ")?.trim())
 
         if (categorytxt.length()< 3){
-            categorytxt.error = "Minimum 3 Characters"
+            categorytxtLayout.error = "Minimum 3 Characters"
 
             return false
         }
-        else categorytxt.error= null
+        else categorytxtLayout.error= null
 
         if (categorytxt.text!!.isEmpty()){
-            categorytxt.error = "Must No tBe Empty"
+            categorytxtLayout.error = "Must No tBe Empty"
 
             return false
         }
-        else categorytxt.error= null
+        else categorytxtLayout.error= null
 
 
 
         if (descriptiontxt.text!!.isEmpty()){
-            descriptiontxt.error = "Must No tBe Empty"
+            descriptiontxtLayout.error = "Must No tBe Empty"
 
             return false
         }
-        else descriptiontxt.error= null
+        else descriptiontxtLayout.error= null
 
         if (descriptiontxt.length()< 10){
-            descriptiontxt.error = "Minimum 10 Characters"
+            descriptiontxtLayout.error = "Minimum 10 Characters"
 
             return false
         }
-        else descriptiontxt.error= null
+        else descriptiontxtLayout.error= null
 
         return true
     }

@@ -27,8 +27,8 @@
         android:layout_width="300dp"
         android:layout_height="wrap_content"
         android:layout_margin="10dp"
-        android:textColorHint="#5C73E8"
-        app:boxStrokeColor="#5C73E8"
+        android:textColorHint="#E84C4C"
+        app:boxStrokeColor="#E84C4C"
 
         app:boxStrokeWidth="0dp"
 
@@ -37,15 +37,15 @@
         app:errorTextAppearance="@style/error_style"
 
 
-        app:hintTextColor="#5C73E8"
+        app:hintTextColor="#E84C4C"
         app:layout_constraintBottom_toTopOf="@id/btnLogin"
         app:layout_constraintEnd_toEndOf="parent"
 
 
         app:layout_constraintStart_toStartOf="parent"
-        app:suffixTextColor="#5C73E8"
+        app:suffixTextColor="#E84C4C"
         app:endIconMode="password_toggle"
-        app:endIconTint="#5C73E8"
+        app:endIconTint="#E84C4C"
         >
 
         <com.google.android.material.textfield.TextInputEditText
@@ -71,9 +71,9 @@ android:textSize="17dp"
         android:layout_marginBottom="10dp"
         android:text="login"
 
-        android:textColor="#5C73E8"
+        android:textColor="@color/white"
         android:textStyle="italic"
-        app:backgroundTint="#D1A9A9"
+        app:backgroundTint="#E84C4C"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.497"
@@ -88,7 +88,7 @@ android:textSize="17dp"
         android:layout_height="32dp"
         android:layout_marginBottom="8dp"
         android:text="Don't have an account?"
-        android:textColor="#5C73E8"
+        android:textColor="#E84C4C"
         android:textSize="17sp"
         android:textStyle="bold|italic"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -103,20 +103,20 @@ android:textSize="17dp"
         android:layout_width="300dp"
         android:layout_height="wrap_content"
         android:layout_margin="10dp"
-        android:textColorHint="#5C73E8"
-        app:boxStrokeColor="#5C73E8"
+        android:textColorHint="#E84C4C"
+        app:boxStrokeColor="#E84C4C"
         app:boxStrokeWidth="0dp"
 
 
         app:boxStrokeWidthFocused="0dp"
         app:errorEnabled="true"
         app:errorTextAppearance="@style/error_style"
-        app:hintTextColor="#5C73E8"
+        app:hintTextColor="#E84C4C"
         app:layout_constraintBottom_toTopOf="@+id/txtLayoutPassword"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.53"
         app:layout_constraintStart_toStartOf="parent"
-        app:suffixTextColor="#5C73E8"
+        app:suffixTextColor="#E84C4C"
 
         >
 
@@ -136,7 +136,8 @@ android:textSize="17dp"
             app:layout_constraintHorizontal_bias="0.585"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.918" />
+            app:layout_constraintVertical_bias="0.918"
+            android:maxLength="20"/>
     </com.google.android.material.textfield.TextInputLayout>
 
 
@@ -147,10 +148,10 @@ android:textSize="17dp"
         android:layout_marginBottom="8dp"
         android:text="Sign Up"
 
-        android:textColor="#5C73E8"
+        android:textColor="@color/white"
         android:textColorHint="#0C0B0B"
         android:textStyle="italic"
-        app:backgroundTint="#D1A9A9"
+        app:backgroundTint="#E84C4C"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.915"

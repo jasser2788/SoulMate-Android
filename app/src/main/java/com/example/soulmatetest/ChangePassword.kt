@@ -4,6 +4,7 @@ import android.content.SharedPreferences
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
+import android.view.WindowManager
 import android.widget.Toast
 import com.example.soulmatetest.models.User
 import com.example.soulmatetest.utils.ApiInterface
@@ -38,6 +39,9 @@ class ChangePassword : AppCompatActivity() {
 
     private fun changepassword() {
 
+        window?.setFlags(
+            WindowManager.LayoutParams.FLAG_NOT_TOUCHABLE,
+            WindowManager.LayoutParams.FLAG_NOT_TOUCHABLE);
 
         val apiInterface = ApiInterface.create()
 
@@ -58,10 +62,13 @@ class ChangePassword : AppCompatActivity() {
                         putString(PASSWORD, user.password)
 
                     }.apply()
+                    window?.clearFlags(WindowManager.LayoutParams.FLAG_NOT_TOUCHABLE);
+
                     finish()
 
                 }else{
                     Toast.makeText(this@ChangePassword, "Error", Toast.LENGTH_SHORT).show()
+                    window?.clearFlags(WindowManager.LayoutParams.FLAG_NOT_TOUCHABLE);
 
                 }
 
@@ -71,6 +78,7 @@ class ChangePassword : AppCompatActivity() {
 
             override fun onFailure(call: Call<User>, t: Throwable) {
                 Toast.makeText(this@ChangePassword, "Connexion error!", Toast.LENGTH_SHORT).show()
+                window?.clearFlags(WindowManager.LayoutParams.FLAG_NOT_TOUCHABLE);
 
                 /* progBar.visibility = View.INVISIBLE
                  window.clearFlags( WindowManager.LayoutParams.FLAG_NOT_TOUCHABLE)*/
@@ -81,30 +89,30 @@ class ChangePassword : AppCompatActivity() {
 
 
     private fun validate(): Boolean {
-        newpasswordtxt.error = null
-        confirmnewpasswordtxt.error = null
+        newpasswordtxtLayout.error = null
+        confirmnewpasswordtxtLayout.error = null
 
 
         if (newpasswordtxt.length()< 8){
-                newpasswordtxt.error = "Minimum 8 Characters"
+            newpasswordtxtLayout.error = "Minimum 8 Characters"
 
             return false
         }
         else newpasswordtxt.error= null
 
         if (newpasswordtxt.text!!.isEmpty()){
-            newpasswordtxt.error = "Must No tBe Empty"
+            newpasswordtxtLayout.error = "Must No tBe Empty"
 
             return false
         }
-        else newpasswordtxt.error= null
+        else newpasswordtxtLayout.error= null
 
         if (newpasswordtxt.text.toString() != confirmnewpasswordtxt.text.toString()){
-            confirmnewpasswordtxt.error = "Password not the same"
+            confirmnewpasswordtxtLayout.error = "Password is not the same"
 
             return false
         }
-        else confirmnewpasswordtxt.error= null
+        else confirmnewpasswordtxtLayout.error= null
 
 
 

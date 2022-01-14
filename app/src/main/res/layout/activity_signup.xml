@@ -26,25 +26,25 @@
         android:layout_width="300dp"
         android:layout_height="wrap_content"
         android:layout_margin="10dp"
-        android:textColorHint="#5C73E8"
-        app:boxStrokeColor="#5C73E8"
+        android:textColorHint="#E84C4C"
+        app:boxStrokeColor="#E84C4C"
 
         app:errorEnabled="true"
         app:errorTextAppearance="@style/error_style"
 
 
-        app:hintTextColor="#5C73E8"
+        app:hintTextColor="#E84C4C"
         app:layout_constraintBottom_toTopOf="@id/txtLayoutConfirmPassword"
 
 
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:suffixTextColor="#5C73E8"
+        app:suffixTextColor="#E84C4C"
         app:boxStrokeWidth="0dp"
         app:boxStrokeWidthFocused="0dp"
 
         app:endIconMode="password_toggle"
-        app:endIconTint="#5C73E8"
+        app:endIconTint="#E84C4C"
         >
 
         <com.google.android.material.textfield.TextInputEditText
@@ -71,9 +71,9 @@
         android:layout_marginBottom="10dp"
         android:text="Sign up"
 
-        android:textColor="#5C73E8"
+        android:textColor="@color/white"
         android:textStyle="italic"
-        app:backgroundTint="#D1A9A9"
+        app:backgroundTint="#E84C4C"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.498"
@@ -88,8 +88,8 @@
         android:layout_height="wrap_content"
         android:layout_margin="10dp"
         android:layout_marginBottom="8dp"
-        android:textColorHint="#5C73E8"
-        app:boxStrokeColor="#5C73E8"
+        android:textColorHint="#E84C4C"
+        app:boxStrokeColor="#E84C4C"
 
 
         app:boxStrokeWidth="0dp"
@@ -97,12 +97,12 @@
         app:errorEnabled="true"
         app:errorTextAppearance="@style/error_style"
 
-        app:hintTextColor="#5C73E8"
+        app:hintTextColor="#E84C4C"
         app:layout_constraintBottom_toTopOf="@+id/txtLayoutPassword"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.495"
         app:layout_constraintStart_toStartOf="parent"
-        app:suffixTextColor="#5C73E8">
+        app:suffixTextColor="#E84C4C">
 
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/txtLogin"
@@ -117,7 +117,7 @@
 
             android:textColor="#000000"
             android:textStyle="italic"
-
+            android:maxLength="20"
             />
 
 
@@ -129,25 +129,25 @@
         android:gravity="center"
         android:layout_height="wrap_content"
         android:layout_margin="10dp"
-        android:textColorHint="#5C73E8"
-        app:boxStrokeColor="#5C73E8"
+        android:textColorHint="#E84C4C"
+        app:boxStrokeColor="#E84C4C"
 
         app:errorEnabled="true"
         app:errorTextAppearance="@style/error_style"
 
 
-        app:hintTextColor="#5C73E8"
+        app:hintTextColor="#E84C4C"
         app:layout_constraintBottom_toTopOf="@id/signup"
 
 
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:suffixTextColor="#5C73E8"
+        app:suffixTextColor="#E84C4C"
         app:boxStrokeWidth="0dp"
         app:boxStrokeWidthFocused="0dp"
 
         app:endIconMode="password_toggle"
-        app:endIconTint="#5C73E8"
+        app:endIconTint="#E84C4C"
         >
 
         <com.google.android.material.textfield.TextInputEditText
@@ -179,7 +179,7 @@
         android:layout_marginTop="21dp"
         android:layout_marginBottom="8dp"
         android:text="Already have an account?"
-        android:textColor="#5C73E8"
+        android:textColor="#E84C4C"
         android:textSize="17sp"
         android:textStyle="bold|italic"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -198,9 +198,9 @@
         android:layout_marginEnd="25dp"
         android:layout_marginBottom="8dp"
         android:text="LOGIN"
-        android:textColor="#5C73E8"
+        android:textColor="@color/white"
         android:textStyle="italic"
-        app:backgroundTint="#D1A9A9"
+        app:backgroundTint="#E84C4C"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.996"

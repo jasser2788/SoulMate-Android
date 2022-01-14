@@ -54,7 +54,7 @@ class FavoriteDetail : AppCompatActivity() {
         chatBtn.setOnClickListener(){
             chatBtn.isClickable = false
 
-            startchat(intent.getStringExtra("owner").toString())
+            startchat(intent.getStringExtra("user_id").toString())
         }
         TopHeaderView2.setBackButtonClickListener(){
             onBackPressed()

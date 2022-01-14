@@ -43,6 +43,7 @@ class CatalogueAdapter(val catlogueList: MutableList<Catalogue> ): RecyclerView.
                     holder.itemView.isClickable = false
 
                     putExtra("_id",current.id)
+                    putExtra("user_id",current.user_id)
                     putExtra("picture",current.picture)
                     putExtra("owner",current.nom)
                     putExtra("category",current.category)

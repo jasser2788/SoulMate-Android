@@ -131,6 +131,9 @@ class Login : AppCompatActivity() {
 
         if (validate()){
 
+            window?.setFlags(
+                WindowManager.LayoutParams.FLAG_NOT_TOUCHABLE,
+                WindowManager.LayoutParams.FLAG_NOT_TOUCHABLE);
 
 
 
@@ -163,6 +166,7 @@ class Login : AppCompatActivity() {
                             putBoolean(IS_REMEMBRED, false)
                         }.apply()
                         Toast.makeText(this@Login, "Login Success", Toast.LENGTH_SHORT).show()
+                        window?.clearFlags(WindowManager.LayoutParams.FLAG_NOT_TOUCHABLE);
 
                         val intent = Intent(this@Login,MainHome::class.java)
                         startActivity(intent)
@@ -171,6 +175,8 @@ class Login : AppCompatActivity() {
                     }else{
 
                         Toast.makeText(this@Login, "User not found", Toast.LENGTH_SHORT).show()
+                        window?.clearFlags(WindowManager.LayoutParams.FLAG_NOT_TOUCHABLE);
+
                     }
 
                     /*progBar.visibility = View.INVISIBLE
@@ -179,6 +185,7 @@ class Login : AppCompatActivity() {
 
                 override fun onFailure(call: Call<User>, t: Throwable) {
                     Toast.makeText(this@Login, "Connexion error!", Toast.LENGTH_SHORT).show()
+                    window?.clearFlags(WindowManager.LayoutParams.FLAG_NOT_TOUCHABLE);
 
                     /* progBar.visibility = View.INVISIBLE
                      window.clearFlags( WindowManager.LayoutParams.FLAG_NOT_TOUCHABLE)*/
@@ -217,6 +224,7 @@ class Login : AppCompatActivity() {
     private fun validate(): Boolean {
         txtLogin.error = null
         txtPassword.error = null
+        txtLogin.setText(txtLogin.text?.replace("\\s+".toRegex(), " ")?.trim())
 
       /*  if (txtLogin.length()< 4){
             txtLayoutLogin.error = "Minimum 4 Characters"

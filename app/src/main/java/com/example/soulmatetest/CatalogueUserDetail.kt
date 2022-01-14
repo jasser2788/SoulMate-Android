@@ -223,38 +223,41 @@ test= true
         })
     }
     private fun validate(): Boolean {
-        descriptionDUtxt.error = null
-        categoryDUtxt.error = null
+
+        descriptionDUtxtLayout.error = null
+        categoryDUtxtLayout.error = null
+        descriptionDUtxt.setText(descriptionDUtxt.text?.replace("\\s+".toRegex(), " ")?.trim())
+        categoryDUtxt.setText(categoryDUtxt.text?.replace("\\s+".toRegex(), " ")?.trim())
 
         if (descriptionDUtxt.length()< 10){
-            descriptionDUtxt.error = "Minimum 10 Characters"
+            descriptionDUtxtLayout.error = "Minimum 10 Characters"
 
             return false
         }
-        else descriptionDUtxt.error= null
+        else descriptionDUtxtLayout.error= null
 
         if (descriptionDUtxt.text!!.isEmpty()){
-            descriptionDUtxt.error = "Must No tBe Empty"
+            descriptionDUtxtLayout.error = "Must No tBe Empty"
 
             return false
         }
-        else descriptionDUtxt.error= null
+        else descriptionDUtxtLayout.error= null
 
 
 
         if (categoryDUtxt.text!!.isEmpty()){
-            categoryDUtxt.error = "Must No tBe Empty"
+            categoryDUtxtLayout.error = "Must No tBe Empty"
 
             return false
         }
-        else categoryDUtxt.error= null
+        else categoryDUtxtLayout.error= null
 
         if (categoryDUtxt.length()< 3){
-            categoryDUtxt.error = "Minimum 3 Characters"
+            categoryDUtxtLayout.error = "Minimum 3 Characters"
 
             return false
         }
-        else categoryDUtxt.error= null
+        else categoryDUtxtLayout.error= null
 
         return true
     }

@@ -13,37 +13,49 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <TextView
-        android:id="@+id/textView9"
-        android:layout_width="wrap_content"
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/newusernametxtLayout"
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginStart="18dp"
-        android:layout_marginEnd="9dp"
-        android:text="New Username"
-        app:layout_constraintEnd_toStartOf="@+id/newusernametxt"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/newusernametxt" />
+        android:layout_marginStart="32dp"
+        android:layout_marginEnd="32dp"
+        android:hint="New username"
+        android:outlineAmbientShadowColor="#E84C4C"
+        android:outlineSpotShadowColor="#E84C4C"
 
-    <EditText
-        android:id="@+id/newusernametxt"
-        android:hint="username"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="181dp"
-        android:ems="10"
-        android:inputType="textPersonName"
+        android:textColorHint="#E84C4C"
+        app:boxStrokeColor="#E84C4C"
+        app:boxStrokeErrorColor="#E84C4C"
+        app:helperTextTextColor="#E84C4C"
+
+        app:hintTextColor="#E84C4C"
+        app:layout_constraintBottom_toTopOf="@+id/updateUsernameBtn"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/textView9"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.852"
+        app:placeholderTextColor="#E84C4C"
+        app:prefixTextColor="#E84C4C"
+        app:suffixTextColor="#E84C4C">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/newusernametxt"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            tools:layout_editor_absoluteX="-84dp"
+            tools:layout_editor_absoluteY="197dp" />
+    </com.google.android.material.textfield.TextInputLayout>
 
     <Button
         android:id="@+id/updateUsernameBtn"
-        android:backgroundTint="#E84C4C"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="148dp"
-        android:layout_marginBottom="239dp"
+        android:layout_marginBottom="256dp"
+        android:backgroundTint="#E84C4C"
         android:text="Update"
         app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
 </androidx.constraintlayout.widget.ConstraintLayout>

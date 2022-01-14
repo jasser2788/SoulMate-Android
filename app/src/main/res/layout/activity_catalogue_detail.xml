@@ -5,9 +5,10 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".CatalogueDetail">
+
     <io.getstream.chat.android.ui.message.list.header.MessageListHeaderView
         android:id="@+id/TopHeaderView"
-        android:layout_width="0dp"
+        android:layout_width="0sp"
         android:layout_height="wrap_content"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -15,98 +16,120 @@
 
     <ImageView
         android:id="@+id/imageD"
-        android:layout_width="200dp"
-        android:layout_height="160dp"
-        android:layout_marginTop="72dp"
+        android:layout_width="200sp"
+        android:layout_height="160sp"
+        android:layout_marginBottom="25sp"
+        android:layout_marginTop="72sp"
+        app:layout_constraintBottom_toTopOf="@+id/textView8"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.497"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toBottomOf="@+id/TopHeaderView" />
 
     <TextView
         android:id="@+id/textView4"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="35dp"
-        android:layout_marginTop="340dp"
-        android:layout_marginEnd="30dp"
+        android:layout_marginStart="70sp"
+        android:layout_marginEnd="61sp"
+        android:layout_marginBottom="48sp"
         android:text="Offer"
+        android:textColor="#E84C4C"
+        android:textSize="15sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toTopOf="@+id/textView7"
         app:layout_constraintEnd_toStartOf="@+id/categoryDtxt"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toBottomOf="@+id/textView8" />
 
     <TextView
         android:id="@+id/textView7"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="35dp"
-        android:layout_marginEnd="16dp"
+        android:layout_marginStart="70sp"
+        android:layout_marginEnd="21sp"
+        android:layout_marginBottom="149sp"
         android:text="Description"
-        app:layout_constraintBaseline_toBaselineOf="@+id/descriptionDtxt"
+        android:textColor="#E84C4C"
+        android:textSize="15sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toTopOf="@+id/startChatBtn"
         app:layout_constraintEnd_toStartOf="@+id/descriptionDtxt"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView4" />
 
-    <Button
-        android:id="@+id/favoriteBtn"
-        android:backgroundTint="#E84C4C"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="40dp"
-        android:text="add to favorite"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
+
 
     <TextView
         android:id="@+id/textView8"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="35dp"
-        android:layout_marginEnd="48dp"
+        android:layout_marginStart="70sp"
+        android:layout_marginEnd="54sp"
+
+        android:layout_marginBottom="33sp"
         android:text="owner"
-        app:layout_constraintBaseline_toBaselineOf="@+id/ownerDtxt"
+        android:textColor="#E84C4C"
+        android:textSize="15sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toTopOf="@+id/textView4"
         app:layout_constraintEnd_toStartOf="@+id/ownerDtxt"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/imageD" />
 
     <TextView
         android:id="@+id/ownerDtxt"
-        android:layout_width="230dp"
-        android:layout_height="40dp"
-        android:layout_marginEnd="49dp"
-        android:layout_marginBottom="24dp"
+        android:layout_width="228sp"
+        android:layout_height="40sp"
+        android:textSize="15sp"
+
+        android:layout_marginTop="25sp"
+        android:layout_marginEnd="72sp"
+        android:layout_marginBottom="13sp"
         app:layout_constraintBottom_toTopOf="@+id/categoryDtxt"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/textView8" />
+        app:layout_constraintStart_toEndOf="@+id/textView8"
+        app:layout_constraintTop_toBottomOf="@+id/imageD" />
 
     <TextView
         android:id="@+id/categoryDtxt"
-        android:layout_width="230dp"
-        android:layout_height="40dp"
-        android:layout_marginEnd="49dp"
-        app:layout_constraintBottom_toBottomOf="@+id/textView4"
+        android:textSize="15sp"
+
+        android:layout_width="228sp"
+        android:layout_height="40sp"
+        android:layout_marginTop="33sp"
+        android:layout_marginEnd="72sp"
+        android:layout_marginBottom="28sp"
+        app:layout_constraintBottom_toTopOf="@+id/descriptionDtxt"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/textView4"
-        app:layout_constraintTop_toBottomOf="@+id/textView4"
-        app:layout_constraintVertical_bias="1.0" />
+        app:layout_constraintTop_toBottomOf="@+id/textView8" />
 
     <TextView
         android:id="@+id/descriptionDtxt"
-        android:layout_width="230dp"
-        android:layout_height="135dp"
-        android:layout_marginTop="83dp"
-        android:layout_marginEnd="49dp"
-        app:layout_constraintBottom_toTopOf="@+id/startChatBtn"
+android:textSize="15sp"
+        android:layout_width="228sp"
+        android:layout_height="135sp"
+        android:layout_marginEnd="70sp"
+        app:layout_constraintBaseline_toBaselineOf="@+id/textView7"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/textView7"
-        app:layout_constraintTop_toTopOf="@+id/categoryDtxt"
-        app:layout_constraintVertical_bias="0.0" />
+        app:layout_constraintStart_toEndOf="@+id/textView7" />
+    <Button
+        android:id="@+id/favoriteBtn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="70sp"
+        android:backgroundTint="#E84C4C"
+        android:text="add to favorite"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
 
     <Button
         android:id="@+id/startChatBtn"
-        android:backgroundTint="#E84C4C"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="20dp"
+        android:layout_marginBottom="20sp"
+        android:backgroundTint="#E84C4C"
         android:text="Start Chat"
         app:layout_constraintBottom_toTopOf="@+id/favoriteBtn"
         app:layout_constraintEnd_toEndOf="parent"

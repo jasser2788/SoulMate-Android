@@ -72,6 +72,9 @@ class Signup : AppCompatActivity() {
     private fun doLogin(){
 
         if (validate()){
+            window?.setFlags(
+                WindowManager.LayoutParams.FLAG_NOT_TOUCHABLE,
+                WindowManager.LayoutParams.FLAG_NOT_TOUCHABLE);
             val apiInterface = ApiInterface.create()
             /* progBar.visibility = View.VISIBLE
 
@@ -93,10 +96,14 @@ class Signup : AppCompatActivity() {
                         val intent=Intent(this@Signup,Login::class.java)
                         startActivity(intent)
                         finish()
+                        window?.clearFlags(WindowManager.LayoutParams.FLAG_NOT_TOUCHABLE);
+
                         Toast.makeText(this@Signup, "You can login now", Toast.LENGTH_LONG).show()
 
                     }else{
+
                         Toast.makeText(this@Signup, "Username already exist", Toast.LENGTH_SHORT).show()
+                        window?.clearFlags(WindowManager.LayoutParams.FLAG_NOT_TOUCHABLE);
 
                     }
 
@@ -106,6 +113,7 @@ class Signup : AppCompatActivity() {
 
                 override fun onFailure(call: Call<User>, t: Throwable) {
                     Toast.makeText(this@Signup, "Connexion error!", Toast.LENGTH_SHORT).show()
+                    window?.clearFlags(WindowManager.LayoutParams.FLAG_NOT_TOUCHABLE);
 
                     /* progBar.visibility = View.INVISIBLE
                      window.clearFlags( WindowManager.LayoutParams.FLAG_NOT_TOUCHABLE)*/
@@ -121,15 +129,16 @@ class Signup : AppCompatActivity() {
 
         txtLogin.error = null
         txtPassword.error = null
-
-        if (txtLogin.text!!.isEmpty()){
+        txtLogin.setText(txtLogin.text?.replace("\\s+".toRegex(), " ")?.trim())
+        if (txtLogin.text?.isEmpty() == true){
             txtLayoutLogin.error = "Must No tBe Empty"
 
             return false
         }        else txtLayoutLogin.error= null
 
 
-        if (txtLogin.length()< 4){
+        if (txtLogin.length() < 4){
+
             txtLayoutLogin.error = "Minimum 4 Characters"
 
             return false
