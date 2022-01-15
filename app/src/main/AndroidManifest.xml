@@ -8,8 +8,8 @@
     <application
         android:name=".MyApplication"
         android:allowBackup="true"
-        android:icon="@drawable/icon"
-        android:label="Soul Mate"
+        android:icon="@drawable/a"
+        android:label="SoulMate"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.SoulMateTest"
