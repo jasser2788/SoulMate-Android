@@ -48,7 +48,7 @@ class MyPostFragment : Fragment() {
         loadData()
         search_text.setText("")
         nopost.text = ""
-        swipeHome.isRefreshing = false
+        swipeMyPost.isRefreshing = false
 
     }
 
