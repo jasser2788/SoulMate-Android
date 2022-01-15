@@ -49,6 +49,7 @@ class FavoriteFragment : Fragment() {
 
         search_text.setText("")
             loadData()
+        swipeFavorite.isRefreshing = false
 
 
     }
@@ -100,6 +101,10 @@ class FavoriteFragment : Fragment() {
         })    }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+
+        swipeFavorite.setColorSchemeResources(R.color.mycolor)
+        swipeFavorite.setOnRefreshListener { onResume() }
+
         activity?.window?.setFlags(
             WindowManager.LayoutParams.FLAG_NOT_TOUCHABLE,
             WindowManager.LayoutParams.FLAG_NOT_TOUCHABLE);

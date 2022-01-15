@@ -48,6 +48,7 @@ class MyPostFragment : Fragment() {
         loadData()
         search_text.setText("")
         nopost.text = ""
+        swipeHome.isRefreshing = false
 
     }
 
@@ -98,6 +99,8 @@ class MyPostFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
 
+        swipeMyPost.setColorSchemeResources(R.color.mycolor)
+        swipeMyPost.setOnRefreshListener { onResume() }
 
         btnAdd.setOnClickListener(){
             btnAdd.isEnabled = false

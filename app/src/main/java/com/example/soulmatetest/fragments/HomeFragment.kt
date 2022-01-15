@@ -52,12 +52,13 @@ class HomeFragment : Fragment() {
         noposthome.text = ""
 
         search_text.setText("")
-
+        swipeHome.isRefreshing = false
 
     }
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
 
-
+        swipeHome.setColorSchemeResources(R.color.mycolor)
+        swipeHome.setOnRefreshListener { onResume() }
         activity?.window?.setFlags(
             WindowManager.LayoutParams.FLAG_NOT_TOUCHABLE,
             WindowManager.LayoutParams.FLAG_NOT_TOUCHABLE);

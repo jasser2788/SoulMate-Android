@@ -112,8 +112,8 @@ class CatalogueUserDetail : AppCompatActivity() {
         val apiInterface = ApiInterface.create()
 
         val builder = AlertDialog.Builder(this)
-        builder.setTitle("Logout")
-        builder.setMessage("Are you sure you want to delete your post ?")
+        builder.setTitle("Delete")
+        builder.setMessage("Are you sure you want to delete your offer ?")
         builder.setPositiveButton("Yes") { dialogInterface, which ->
             var test = true
             if (test == true) {
