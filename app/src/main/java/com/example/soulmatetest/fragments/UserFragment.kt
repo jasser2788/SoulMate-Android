@@ -76,7 +76,7 @@ class UserFragment : Fragment() {
             //OTHER METHODE TO IMPORT IMAGE
             val filename = mSharedPref.getString(PICTURE, "").toString()
             val path =
-                "https://firebasestorage.googleapis.com/v0/b/soulmate-fce7d.appspot.com/o/images%2F" + filename + "?alt=media"
+                "https://firebasestorage.googleapis.com/v0/b/soulmateios.appspot.com/o/images%2F" + filename + "?alt=media"
             Glide.with(context)
                 .load(path)
                 .into(imageuser)
@@ -192,7 +192,7 @@ class UserFragment : Fragment() {
             id = mSharedPref.getString(ID, "").toString(),
             extraData = mutableMapOf(
                 "name" to mSharedPref.getString(USERNAME, "").toString(),
-                "image" to "https://firebasestorage.googleapis.com/v0/b/soulmate-fce7d.appspot.com/o/images%2F" + formater + "?alt=media"
+                "image" to "https://firebasestorage.googleapis.com/v0/b/soulmateios.appspot.com/o/images%2F" + formater + "?alt=media"
 
             )
         )

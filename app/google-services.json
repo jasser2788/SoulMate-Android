@@ -1,34 +1,41 @@
 {
   "project_info": {
-    "project_number": "161576815618",
-    "project_id": "soulmate-fce7d",
-    "storage_bucket": "soulmate-fce7d.appspot.com"
+    "project_number": "451594429058",
+    "project_id": "soulmateios",
+    "storage_bucket": "soulmateios.appspot.com"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:161576815618:android:2420ed6559165c69dd6b1b",
+        "mobilesdk_app_id": "1:451594429058:android:122b59d4c8b29b3041ca9b",
         "android_client_info": {
           "package_name": "com.example.soulmatetest"
         }
       },
       "oauth_client": [
         {
-          "client_id": "161576815618-plsjsp45e6p4jve66o81amv4bdceao0g.apps.googleusercontent.com",
+          "client_id": "451594429058-qb9hku52vav2i68rbo2u5dq72mnou9rd.apps.googleusercontent.com",
           "client_type": 3
         }
       ],
       "api_key": [
         {
-          "current_key": "AIzaSyAgSHn7QwoT4esPwuUvCNGJU78MCLmkjOE"
+          "current_key": "AIzaSyBcRlQvwAV1limF4P67_kVCIY9XonjQSsc"
         }
       ],
       "services": {
         "appinvite_service": {
           "other_platform_oauth_client": [
             {
-              "client_id": "161576815618-plsjsp45e6p4jve66o81amv4bdceao0g.apps.googleusercontent.com",
+              "client_id": "451594429058-qb9hku52vav2i68rbo2u5dq72mnou9rd.apps.googleusercontent.com",
               "client_type": 3
+            },
+            {
+              "client_id": "451594429058-q1limoaa43ufefn2mfcdgrl24agaltlf.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "kytwo.miniprojet"
+              }
             }
           ]
         }

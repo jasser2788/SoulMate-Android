@@ -45,7 +45,7 @@ class CatalogueDetail : AppCompatActivity() {
 
         filename = intent.getStringExtra("picture").toString()
         val path =
-            "https://firebasestorage.googleapis.com/v0/b/soulmate-fce7d.appspot.com/o/catalogueImg%2F" + filename + "?alt=media"
+            "https://firebasestorage.googleapis.com/v0/b/soulmateios.appspot.com/o/catalogueImg%2F" + filename + "?alt=media"
         Glide.with(this)
             .load(path)
             .into(imageD)

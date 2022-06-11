@@ -203,7 +203,7 @@ class Login : AppCompatActivity() {
             id = user.id,
             extraData = mutableMapOf(
                 "name" to user.username,
-                "image" to "https://firebasestorage.googleapis.com/v0/b/soulmate-fce7d.appspot.com/o/images%2F" + user.picture + "?alt=media"
+                "image" to "https://firebasestorage.googleapis.com/v0/b/soulmateios.appspot.com/o/images%2F" + user.picture + "?alt=media"
 
             )
         )
